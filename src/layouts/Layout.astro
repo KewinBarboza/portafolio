@@ -1,0 +1,25 @@
+---
+import PERSONA from './../../public/data/persona.js';
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content={PERSONA.sobre_mi}>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <title>{title}</title>
+</head>
+
+<body>
+  <slot />
+</body>
+
+</html>

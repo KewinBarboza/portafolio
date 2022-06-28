@@ -1,0 +1,27 @@
+---
+import PROYECTOS from './../../../public/data/proyectos.js'
+---
+<div class="grid gap-2 mx-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mt-5 lg:mt-16">
+  {
+    PROYECTOS.map(({nombre, imagen, descripcion, url, url_repositorio, lenguajes}) => (
+      <article class="rounded-3xl mb-3 shadow-lg border-2 border-white hover:border-blue-500">
+        <img src={imagen} class="h-64 w-full object-cover p-3 rounded-3xl">
+        <main class="mt-2 px-3">
+          <p class="font-bold font-sans text-gray-800 text-xl">{nombre}</p>
+          <ul class="flex">
+            {
+              lenguajes.map((lenguaje) => (
+                <li class="py-1 font-sans px-2 rounded-md bg-blue-300 text-xs mr-2 mt-2 text-white">{lenguaje}</li>
+              ))
+            }
+          </ul>
+          <p class="font-base font-sans text-lg mt-2 mb-5 text-gray-500">{descripcion}</p>
+          <footer class="flex">
+            <a href={url} target="_blank" class="hover:underline  block text-blue-600 mr-2 rounded-lg my-3">Ver proyecto</a>
+            <a href={url_repositorio} target="_blank" class="hover:underline  block text-blue-600 mr-2 rounded-lg my-3">Ver repositorio</a>
+          </footer>
+        </main>
+      </article>
+    ))
+  }
+</div>

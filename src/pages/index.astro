@@ -1,0 +1,40 @@
+---
+import Header from '../components/sections/Header.astro'
+import Navbar from '../components/Navbar.astro'
+import Experiencia from '../components/sections/Experiencia.astro'
+import Proyectos from '../components/sections/Proyectos.astro'
+import Recomendaciones from '../components/sections/Recomendaciones.astro'
+import SobreMi from '../components/sections/SobreMi.astro'
+import Title from '../components/UI/Title.astro'
+import Layout from '../layouts/Layout.astro'
+import Section from '../layouts/Section.astro'
+import Footer from '../components/sections/Footer.astro'
+---
+
+<Layout title="Kewin Barboza">
+  <Navbar/>
+  <Header />
+
+  <main class="container mx-auto">
+    <Section id="sobre-mi">
+      <Title title="Sobre mi" />
+      <SobreMi/>
+    </Section>
+
+    <Section id="experiencia">
+      <Title title="Experiencia" />
+      <Experiencia/>
+    </Section>
+
+    <Section id="proyectos">
+      <Title title="Proyectos" />
+      <Proyectos/>
+    </Section>
+
+    <Section id="recomendaciones">
+      <Title title="Recomendaciones" />
+      <Recomendaciones/>
+    </Section>
+  </main>
+  <Footer/>
+</Layout>

@@ -1,0 +1,14 @@
+---
+import REDES_SOCIALES  from './../../public/data/redes_sociales.js'
+import Icons from './Icons.astro'
+---
+
+{
+  REDES_SOCIALES.map((link) => (
+    <li>
+      <a href={link.url} target="_blank">
+        <Icons name={link.icon} />
+      </a>
+    </li>
+  ))
+}

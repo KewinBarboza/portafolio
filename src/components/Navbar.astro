@@ -1,0 +1,20 @@
+---
+import LINKS_HOME from './../../public/data/links_home.js'
+import Link from "./UI/Link.astro"
+import Logo from "./UI/Logo.astro"
+import RedesSociales from './RedesSociales.astro'
+---
+
+<nav class="bg-white/90 w-full flex justify-around items-center py-3 fixed top-0 backdrop-blur-xl">
+  <Logo/>
+  <ul class="md:flex justify-between hidden">
+    {LINKS_HOME.map((link) => (
+      <li>
+        <Link url={link.url} titulo={link.titulo}/>
+      </li>
+    ))}
+  </ul>
+  <ul class="flex justify-between">
+    <RedesSociales/>
+  </ul>
+</nav>
