@@ -27,19 +27,4 @@ export default [
     "fork": false,
     "imagen": "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/Guia-de-GitHub.jpg"
   },
-  {
-    "nombre": "portafolio",
-    "lenguajes": [
-      "Astro",
-      "JavaScript",
-      "HTML",
-      "CSS"
-    ],
-    "isPrivate": false,
-    "descripcion": "Portafolio",
-    "url": "https://kewinbarboza.github.io/Portafolio/",
-    "url_repositorio": "https://github.com/KewinBarboza/portafolio",
-    "fork": false,
-    "imagen": "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/portafolio.jpg"
-  }
 ]
