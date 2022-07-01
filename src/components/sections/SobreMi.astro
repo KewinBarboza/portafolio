@@ -1,26 +1,28 @@
 ---
-import PERSONA from './../../data/persona.js'
-// import curriculum from './../../public/data/curriculum.pdf'
+import PERSONA from '@data/persona.js'
+import curriculum from '@data/curriculum.pdf'
+
+const {foto, experiencia, proyectos, carrera, sobre_mi} = PERSONA
 ---
 
 <div class="block lg:flex mt-5 lg:mt-16">
-  <img src={PERSONA.foto} class="h-full w-full md:mx-auto lg:mx-0 lg:mb-0 mb-3 lg:mr-6 mr-0 md:w-80 rounded-xl">
+  <img src={foto} class="h-full w-full md:mx-auto lg:mx-0 lg:mb-0 mb-3 lg:mr-6 mr-0 md:w-80 rounded-xl">
   <div class="ml-0 lg:ml-16 sm:px-0 md:px-5">
     <div class="grid gap-5 sm:grid-cols-1 md:grid-cols-3 mb-10">
       <div class="rounded-xl bg-blue-50 py-7 text-center shadow-md">
         <p class="font-bold text-gray-800 text-lg">Experiencia</p>
-        <p class="font-light text-gray-500">{PERSONA.experiencia} años</p>
+        <p class="font-light text-gray-500">{experiencia} años</p>
       </div>
       <div class="rounded-xl bg-blue-50 py-7 text-center shadow-md">
         <p class="font-bold text-gray-800 text-lg">Proyectos</p>
-        <p class="font-light text-gray-500">{PERSONA.proyectos} completados</p>
+        <p class="font-light text-gray-500">{proyectos} completados</p>
       </div>
       <div class="rounded-xl bg-blue-50 py-7 text-center shadow-md">
         <p class="font-bold text-gray-800 text-lg">Universidad</p>
-        <p class="font-light text-gray-500">{PERSONA.carrera}</p>
+        <p class="font-light text-gray-500">{carrera}</p>
       </div>
     </div>
-    <p class="font-sans text-lg mb-14 text-gray-500">{PERSONA.sobre_mi}</p>
-    <a href="#" target="_blank" class="font-sans py-4 px-6 bg-blue-400 border-2 border-blue-400 hover:bg-blue-500 hover:border-blue-500 text-white font-medium rounded-xl">Descargar CV</a>
+    <p class="font-sans text-lg mb-14 text-gray-500">{sobre_mi}</p>
+    <a href={curriculum} target="_blank" class="font-sans py-4 px-6 bg-blue-400 border-2 border-blue-400 hover:bg-blue-500 hover:border-blue-500 text-white font-medium rounded-xl">Descargar CV</a>
   </div>
 </div>

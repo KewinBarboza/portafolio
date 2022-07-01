@@ -7,10 +7,9 @@ export default [
       "HTML"
     ],
     "isPrivate": false,
-    "descripcion": "Catalogo online  para Arca-Rags",
+    "descripcion": "catálogo online para Arca-Rags",
     "url": "http://www.aarcarags.com/#/",
     "url_repositorio": "https://github.com/KewinBarboza/Arca-Rags",
-    "fork": false,
     "imagen": "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/Arca-Rags.jpg"
   },
   {
@@ -24,7 +23,6 @@ export default [
     "descripcion": "Guía sencilla de GuitHub",
     "url": "http://KewinBarboza.github.io/Guia-de-GitHub",
     "url_repositorio": "https://github.com/KewinBarboza/Guia-de-GitHub",
-    "fork": false,
     "imagen": "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/Guia-de-GitHub.jpg"
   },
 ]
