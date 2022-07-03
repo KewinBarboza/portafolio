@@ -1,0 +1,15 @@
+---
+import LINKS_HOME from '@data/links_home.js'
+import Link from './Link.astro'
+---
+
+<!-- <Link url={url} titulo={titulo} /> -->
+<div class="fixed bottom-2 w-full left-0 px-3 md:hidden">
+  <ul class="flex justify-evenly backdrop-blur-xl bg-white/90 py-4 px-2 rounded-lg">
+    { LINKS_HOME.map(({url, titulo}) => (
+    <li>
+      <a class="text-sm" href={url}>{titulo}</a>
+    </li>
+    ))}
+  </ul>
+</div>

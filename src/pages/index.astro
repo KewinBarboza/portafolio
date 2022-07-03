@@ -1,6 +1,6 @@
 ---
 import Header from '../components/sections/Header.astro'
-import Navbar from '../components/Navbar.astro'
+import Navbar from '../components/UI/Navbar.astro'
 import Experiencia from '../components/sections/Experiencia.astro'
 import Proyectos from '../components/sections/Proyectos.astro'
 import Recomendaciones from '../components/sections/Recomendaciones.astro'
@@ -11,36 +11,39 @@ import Section from '../layouts/Section.astro'
 import Footer from '../components/sections/Footer.astro'
 import Tecnologias from 'src/components/sections/Tecnologias.astro'
 import Trabajemos from 'src/components/sections/Trabajemos.astro'
+import NavigationMobile from 'src/components/UI/NavigationMobile.astro'
 ---
 
 <Layout title="Kewin Barboza">
-  <Navbar/>
+  <Navbar />
   <Header />
 
   <main class="container mx-auto">
     <Section id="sobre-mi">
       <Title title="Sobre mi" />
-      <SobreMi/>
+      <SobreMi />
     </Section>
 
     <Section id="experiencia">
       <Title title="Experiencia" />
-      <Experiencia/>
+      <Experiencia />
     </Section>
 
-    <Trabajemos/>
+    <Trabajemos />
 
     <Section id="proyectos">
       <Title title="Proyectos" />
-      <Proyectos/>
+      <Proyectos />
     </Section>
 
-    <Tecnologias/>
+    <Tecnologias />
 
     <Section id="recomendaciones">
       <Title title="Recomendaciones" />
-      <Recomendaciones/>
+      <Recomendaciones />
     </Section>
+
+    <NavigationMobile />
   </main>
-  <Footer/>
+  <Footer />
 </Layout>
