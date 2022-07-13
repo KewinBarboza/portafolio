@@ -7,7 +7,8 @@ import Icons from './../Icons.astro'
   {
   PROYECTOS.map(({nombre, imagen, descripcion, url, url_repositorio, lenguajes, isPrivate}) => (
   <article class="rounded-3xl mb-3 border-2 border-white hover:border-blue-500">
-    <img src={imagen} class="h-64 w-full object-cover p-3 rounded-3xl">
+    <img src={imagen} class="h-64 w-full object-cover p-3 rounded-3xl" height="308" width="251" alt={descripcion}
+      title={nombre}>
     <main class="mt-2 px-3">
       <p class="font-bold font-sans text-gray-800 text-xl">{nombre}</p>
       <ul class="flex flex-wrap">
