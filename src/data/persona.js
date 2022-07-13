@@ -7,6 +7,6 @@ export default {
   experiencia: '4',
   proyectos: '8',
   carrera: 'Ing. Informática',
-  curriculum: './src/data/curriculum.pdf',
+  curriculum: 'https://drive.google.com/file/d/1pv3GTP1IGnj-fzDcGm8eKmgv17EhQrnl/view?usp=sharing',
   tecnologias: ['HTML', 'CSS', 'REACT', 'JS', 'MySQL', 'GIT', 'TAILWIND'],
 }

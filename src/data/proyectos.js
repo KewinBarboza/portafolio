@@ -25,4 +25,21 @@ export default [
     "url_repositorio": "https://github.com/KewinBarboza/Guia-de-GitHub",
     "imagen": "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/Guia-de-GitHub.jpg"
   },
+
+  {
+    "nombre": "Sistema de Gestión de Seguridad",
+    "lenguajes": [
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "MySQL",
+      "Bootstrap",
+      "Laravel"
+    ],
+    "isPrivate": true,
+    "descripcion": "Sistema de Gestión de Seguridad y Salud en el Trabajo para las empresas de Colombia",
+    "url": "https://careandsafety.co/",
+    "url_repositorio": "",
+    "imagen": "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/careandsafety.jpg"
+  },
 ]

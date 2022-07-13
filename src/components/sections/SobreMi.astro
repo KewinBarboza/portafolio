@@ -1,8 +1,7 @@
 ---
 import PERSONA from '@data/persona.js'
-import curriculum from '@data/curriculum.pdf'
 
-const {foto, experiencia, proyectos, carrera, sobre_mi} = PERSONA
+const { foto, experiencia, proyectos, carrera, sobre_mi, curriculum } = PERSONA
 ---
 
 <div class="block lg:flex mt-5 lg:mt-16">
@@ -23,6 +22,8 @@ const {foto, experiencia, proyectos, carrera, sobre_mi} = PERSONA
       </div>
     </div>
     <p class="font-sans text-lg mb-14 text-gray-500">{sobre_mi}</p>
-    <a href={curriculum} target="_blank" class="font-sans py-4 px-6 bg-blue-400 border-2 border-blue-400 hover:bg-blue-500 hover:border-blue-500 text-white font-medium rounded-xl">Descargar CV</a>
+    <a href={curriculum} target="_blank"
+      class="font-sans py-4 px-6 bg-blue-400 border-2 border-blue-400 hover:bg-blue-500 hover:border-blue-500 text-white font-medium rounded-xl">Descargar
+      CV</a>
   </div>
 </div>
