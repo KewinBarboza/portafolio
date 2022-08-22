@@ -4,7 +4,7 @@ export default [
     url: '#inicio'
   },
   {
-    titulo: 'Sobre mi',
+    titulo: 'Sobre mí',
     url: '#sobre-mi'
   },
   {
