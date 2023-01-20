@@ -1,36 +1,63 @@
 ---
-import PROYECTOS from '@data/proyectos.js'
-import Icons from './../Icons.astro'
+import PROYECTOS from "@data/proyectos.js";
+import Icons from "./../Icons.astro";
 ---
 
-<div class="grid gap-5 mx-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  mt-5 lg:mt-16">
+<div
+  class="grid gap-5 mx-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 lg:mt-16"
+>
   {
-  PROYECTOS.map(({nombre, imagen, descripcion, url, url_repositorio, lenguajes, isPrivate}) => (
-  <article class="rounded-3xl mb-3 border-2 border-white hover:border-blue-500">
-    <img src={imagen} class="h-64 w-full object-cover p-3 rounded-3xl" height="308" width="251" alt={descripcion}
-      title={nombre}>
-    <main class="mt-2 px-3">
-      <p class="font-bold font-sans text-gray-800 text-xl">{nombre}</p>
-      <ul class="flex flex-wrap">
-        {
-        lenguajes.map((lenguaje) => (
-        <li class="py-1 font-sans px-3 rounded-2xl bg-gray-200 text-xs mr-2 mt-2 text-gray-900">{lenguaje}</li>
-        ))
-        }
-      </ul>
-      <p class="font-base font-sans text-sm mt-2 mb-5 text-gray-500">{descripcion}</p>
-      <footer class="flex">
-        <a href={url} target="_blank" class="mb-3">
-          <Icons name="open_tap" />
-        </a>
-        {isPrivate === false && (
-        <a href={url_repositorio} target="_blank" class="mb-3 mx-3" alt="github">
-          <Icons name="github" />
-        </a>
-        )}
-      </footer>
-    </main>
-  </article>
-  ))
+    PROYECTOS.map(
+      ({
+        nombre,
+        imagen,
+        descripcion,
+        url,
+        url_repositorio,
+        lenguajes,
+        isPrivate,
+      }) => (
+        <article class="rounded-3xl mb-3 border-2 border-white hover:border-blue-500 transition-all">
+          <img
+            src={imagen}
+            class="h-64 w-full object-cover p-3 rounded-3xl"
+            height="308"
+            width="251"
+            alt={descripcion}
+            title={nombre}
+          />
+          <main class="mt-2 px-3">
+            <section class="h-full">
+              <p class="font-bold font-sans text-gray-800 text-xl">{nombre}</p>
+              <ul class="flex flex-wrap">
+                {lenguajes.map((lenguaje) => (
+                  <li class="py-1 font-sans px-3 rounded-2xl bg-gray-200 text-xs mr-2 mt-2 text-gray-900">
+                    {lenguaje}
+                  </li>
+                ))}
+              </ul>
+              <p class="font-base font-sans text-sm mt-2 mb-5 text-gray-500">
+                {descripcion}
+              </p>
+            </section>
+            <footer class="flex items-end">
+              <a href={url} target="_blank" class="mb-3 block">
+                <Icons name="open_tap" />
+              </a>
+              {isPrivate === false && (
+                <a
+                  href={url_repositorio}
+                  target="_blank"
+                  class="mb-3 mx-3"
+                  alt="github"
+                >
+                  <Icons name="github" />
+                </a>
+              )}
+            </footer>
+          </main>
+        </article>
+      )
+    )
   }
 </div>
