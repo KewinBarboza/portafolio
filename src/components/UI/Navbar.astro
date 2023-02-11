@@ -1,20 +1,30 @@
 ---
-import LINKS_HOME from '@data/links_home.js'
-import Link from './Link.astro'
-import Logo from './Logo.astro'
-import RedesSociales from './../RedesSociales.astro'
+import LINKS_HOME from "@data/links_home.js";
+import Link from "./Link.astro";
+import Logo from "./Logo.astro";
+import RedesSociales from "./../RedesSociales.astro";
+import BtnDarkMode from "./BtnDarkMode.astro";
 ---
 
-<nav class="bg-white/90 w-full flex justify-around items-center py-3 fixed top-0 backdrop-blur-xl">
-  <Logo/>
+<nav
+  class="bg-white/90 w-full flex justify-around items-center py-3 fixed top-0 backdrop-blur-xl dark:bg-slate-800/50"
+>
+  <Logo />
   <ul class="md:flex justify-between hidden">
-    {LINKS_HOME.map(({url, titulo}) => (
-      <li>
-        <Link url={url} titulo={titulo}/>
-      </li>
-    ))}
+    {
+      LINKS_HOME.map(({ url, titulo }) => (
+        <li>
+          <Link url={url} titulo={titulo} />
+        </li>
+      ))
+    }
   </ul>
-  <ul class="flex justify-between">
-    <RedesSociales/>
-  </ul>
+  <div class="flex gap-2">
+    <ul
+      class="flex justify-between items-center dark:text-white text-slate-800"
+    >
+      <RedesSociales />
+    </ul>
+    <BtnDarkMode />
+  </div>
 </nav>
