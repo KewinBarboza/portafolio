@@ -4,7 +4,7 @@ import PERSONA from "@data/persona.js";
 const { foto, experiencia, proyectos, carrera, sobre_mi, curriculum } = PERSONA;
 ---
 
-<div class="block lg:flex mt-5 lg:mt-16">
+<div class="block lg:flex mt-5 lg:mt-16 items-center">
   <img
     src={foto}
     class="h-full w-full md:mx-auto lg:mx-0 lg:mb-0 mb-3 lg:mr-6 mr-0 md:w-80 rounded-xl"
@@ -13,10 +13,10 @@ const { foto, experiencia, proyectos, carrera, sobre_mi, curriculum } = PERSONA;
     alt="foto"
     title="kewin barboza"
   />
-  <div class="ml-0 lg:ml-16 sm:px-0 md:px-5">
+  <div class="ml-0 lg:ml-16 sm:px-0 md:px-5 flex items-center flex-col">
     <div class="grid gap-5 grid-cols-2 md:grid-cols-3 mb-10">
       <div
-        class="rounded-xl bg-blue-50 dark:bg-slate-800 py-7 text-center shadow-md"
+        class="rounded-xl bg-blue-50 dark:bg-slate-800 p-7 text-center shadow-md"
       >
         <p class="font-bold text-gray-800 dark:text-gray-300 text-lg">
           Experiencia
@@ -26,7 +26,7 @@ const { foto, experiencia, proyectos, carrera, sobre_mi, curriculum } = PERSONA;
         </p>
       </div>
       <div
-        class="rounded-xl bg-blue-50 dark:bg-slate-800 py-7 text-center shadow-md"
+        class="rounded-xl bg-blue-50 dark:bg-slate-800 p-7 text-center shadow-md"
       >
         <p class="font-bold text-gray-800 dark:text-gray-300 text-lg">
           Proyectos
@@ -36,7 +36,7 @@ const { foto, experiencia, proyectos, carrera, sobre_mi, curriculum } = PERSONA;
         </p>
       </div>
       <div
-        class="rounded-xl bg-blue-50 dark:bg-slate-800 py-7 text-center shadow-md"
+        class="rounded-xl bg-blue-50 dark:bg-slate-800 p-7 text-center shadow-md"
       >
         <p class="font-bold text-gray-800 dark:text-gray-300 text-lg">
           Universidad
@@ -44,13 +44,10 @@ const { foto, experiencia, proyectos, carrera, sobre_mi, curriculum } = PERSONA;
         <p class="font-light text-gray-500 dark:text-gray-200">{carrera}</p>
       </div>
     </div>
-    <p class="font-sans text-lg mb-14 text-gray-500 dark:text-gray-200">
-      {sobre_mi}
-    </p>
     <a
       href={curriculum}
       target="_blank"
-      class="font-sans py-4 px-6 bg-blue-400 border-2 border-blue-400 hover:bg-blue-500 hover:border-blue-500 text-white font-medium rounded-xl"
+      class="font-sans w-full inline-block text-center py-4 px-6 bg-blue-400 border-2 border-blue-400 hover:bg-blue-500 hover:border-blue-500 text-white font-medium rounded-xl"
       >Descargar CV</a
     >
   </div>

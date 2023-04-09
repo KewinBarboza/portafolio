@@ -4,7 +4,12 @@ export default [
     icono: "empresa",
     proyectos: [
       {
-        titulo: "Desarrollador de aplicaciones móvil",
+        titulo: "Participación en el proyecto de chatbot de WhatsApp con kore",
+        año: "2021 - 2022",
+      },
+      {
+        titulo:
+          "Participación en la integración de un SDK para generar tokens de seguridad en una aplicación móvil",
         año: "2021 - 2023",
       },
     ],
