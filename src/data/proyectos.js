@@ -19,13 +19,13 @@ export default [
   },
   {
     nombre: "Guía de GitHub",
-    lenguajes: ["JavaScript", "HTML", "CSS"],
+    lenguajes: ["JavaScript", "HTML", "CSS", "Astro", "Tailwindcss"],
     isPrivate: false,
     descripcion: "Guía sencilla de GitHub",
-    url: "http://KewinBarboza.github.io/Guia-de-GitHub",
+    url: "https://guia-de-github.kewinbarboza.com",
     url_repositorio: "https://github.com/KewinBarboza/Guia-de-GitHub",
     imagen:
-      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/Guia-de-GitHub.jpg",
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/Guia-de-GitHub-2023.jpg",
   },
 
   {
