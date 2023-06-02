@@ -39,4 +39,16 @@ export default [
     imagen:
       "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/careandsafety.jpg",
   },
+
+  {
+    nombre: "DevJobs",
+    lenguajes: ["JavaScript", "HTML", "CSS", "Nextjs", "Tailwindcss"],
+    isPrivate: false,
+    descripcion:
+      "Aplicación para buscar empleo con repositorio de GitHub y la api de InfoJobs",
+    url: "https://devjobs.kewinbarboza.com",
+    url_repositorio: "https://github.com/KewinBarboza/devjobs",
+    imagen:
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/devjobs.png",
+  },
 ];
