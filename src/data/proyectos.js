@@ -51,4 +51,16 @@ export default [
     imagen:
       "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/devjobs.png",
   },
+
+  {
+    nombre: "Reading Book",
+    lenguajes: ["JavaScript", "Tailwindcss", "Qwik"],
+    isPrivate: false,
+    descripcion:
+      "Aplicación para buscar crear listas de lectura de tus libros favoritos",
+    url: "https://reading-book.kewinbarboza.com/",
+    url_repositorio: "https://github.com/KewinBarboza/my-reading-book",
+    imagen:
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/reading-book.png",
+  },
 ];
