@@ -6,7 +6,7 @@ import Icons from "./../Icons.astro";
 <section class="mt-10">
   <ol class="relative border-l border-gray-200 dark:border-gray-700 ml-8">
     {
-      EXPERIENCIA.map(({ nombre, icono, proyectos }) => (
+      EXPERIENCIA.map(({ nombre, icono, proyectos, tiempo }) => (
         <li class="mb-10 ml-6 border-b border-dashed dark:border-b-gray-700 border-b-gray-300">
           <span class="absolute flex items-center justify-center w-14 h-14 rounded-full -left-8 bg-gradient-to-r from-cyan-500 to-blue-500 bg-slate-900 p-2">
             <div class="dark:bg-slate-900 bg-white rounded-full p-2 w-[53px] h-[53px] flex justify-items-center items-center dark:text-white text-blue-500">
@@ -19,7 +19,7 @@ import Icons from "./../Icons.astro";
                 {nombre}
               </h3>
               <time class="block mb-2 text-xl font-light leading-none text-gray-400 dark:text-neutral-300">
-                Released on January 13th, 2022
+                {tiempo}
               </time>
             </div>
             <div>
