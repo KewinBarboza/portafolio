@@ -2,6 +2,7 @@ export default [
   {
     nombre: "Soluciones Laser",
     icono: "empresa",
+    tiempo: "Actualmente",
     proyectos: [
       {
         titulo: "Participación en el proyecto de chatbot de WhatsApp con kore",
@@ -17,6 +18,7 @@ export default [
   {
     nombre: "CareAndSafety",
     icono: "trabajador",
+    tiempo: "desde 2020 hasta 2023",
     proyectos: [
       {
         titulo: "Aplicación móvil para gestionar formularios",
@@ -35,6 +37,7 @@ export default [
   {
     nombre: "Grupo Lockey",
     icono: "empresa",
+    tiempo: "desde 2018 hasta 2021",
     proyectos: [
       {
         titulo: "Sistema de amaestramiento de llaves",
@@ -58,6 +61,7 @@ export default [
   {
     nombre: "Gimnasio Bodyfitness",
     icono: "pesas",
+    tiempo: "desde 2018 hasta 2020",
     proyectos: [
       {
         titulo:
@@ -69,6 +73,7 @@ export default [
   {
     nombre: "I.U.T “Dr. Federico Rivero Palacio”",
     icono: "universidad",
+    tiempo: "desde 2016 hasta 20217",
     proyectos: [
       {
         titulo:
