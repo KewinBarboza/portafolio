@@ -29,7 +29,7 @@ export default [
   },
 
   {
-    nombre: "Sistema de Gestión de Seguridad",
+    nombre: "Sistema de SG-SST",
     lenguajes: ["JavaScript", "HTML", "CSS", "MySQL", "Bootstrap", "Laravel"],
     isPrivate: true,
     descripcion:

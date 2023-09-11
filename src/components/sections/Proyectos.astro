@@ -3,9 +3,7 @@ import PROYECTOS from "@data/proyectos.js";
 import Icons from "./../Icons.astro";
 ---
 
-<div
-  class="grid gap-5 mx-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 lg:mt-16"
->
+<div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 lg:mt-10">
   {
     PROYECTOS.map(
       ({
@@ -17,52 +15,75 @@ import Icons from "./../Icons.astro";
         lenguajes,
         isPrivate,
       }) => (
-        <article class="rounded-3xl mb-3 border-2 border-white dark:border-slate-900 hover:border-blue-500 transition-all">
+        <article class="flex flex-col items-start border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-slate-900 rounded-xl px-5 py-6 w-full">
           <img
             src={imagen}
-            class="h-64 w-full object-cover p-3 rounded-3xl"
-            height="308"
-            width="251"
-            alt={descripcion}
-            title={nombre}
+            class="w-full aspect-[5/4] object-cover rounded mb-5"
+            loading="lazy"
+            decoding="async"
+            height="286"
+            width="229"
+            alt={`proyecto ${nombre}`}
           />
-          <main class="mt-2 px-3">
-            <section class="h-full">
-              <p class="font-bold font-sans text-gray-800 dark:text-slate-100 text-xl">
-                {nombre}
-              </p>
-              <ul class="flex flex-wrap">
-                {lenguajes.map((lenguaje) => (
-                  <li class="py-1 font-sans px-3 rounded-2xl bg-gray-200 dark:bg-slate-700 dark:text-slate-200 text-xs mr-2 mt-2 text-gray-900">
-                    {lenguaje}
-                  </li>
-                ))}
-              </ul>
-              <p class="font-base font-sans text-sm mt-2 mb-5 text-gray-500 dark:text-slate-200">
-                {descripcion}
-              </p>
-            </section>
-            <footer class="flex items-end gap-3">
-              <a
-                href={url}
-                target="_blank"
-                title="ver proyecto"
-                class="mb-3 block dark:text-white text-black"
-              >
-                <Icons name="open_tap" />
+          <main class="flex-auto min-w-full">
+            <div class="mb-2 flex items-center justify-between">
+              <a href={url} target="_blank" class="group text-xl font-medium">
+                <div class="flex items-center space-x-2 transition dark:text-white text-neutral-800 hover:text-gray-400">
+                  <h1>{nombre}</h1>
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    stroke-width="3"
+                    fill="none"
+                    color="currentColor"
+                    name="Deploy"
+                    class="inline-block text-gray-500 transition-transform duration-300 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]"
+                  >
+                    <path
+                      d="M6 19L19 6m0 0v12.48M19 6H6.52"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
               </a>
-              {isPrivate === false && (
-                <a
-                  href={url_repositorio}
-                  target="_blank"
-                  title="ver repositorio"
-                  class="mb-3 block dark:text-white text-black"
-                >
-                  <Icons name="github" />
-                </a>
+              {!isPrivate && (
+                <div class="flex items-center space-x-3">
+                  <a href={url_repositorio} target="_blank" title="Repositorio">
+                    <svg
+                      width="20"
+                      height="20"
+                      stroke-width="1.5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      color="currentColor"
+                      class="text-gray-400 transition-colors duration-150 hover:text-gray-100"
+                      name="Github"
+                    >
+                      <path
+                        d="M16 22.027v-2.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7a5.44 5.44 0 00-1.5-3.75 5.07 5.07 0 00-.09-3.77s-1.18-.35-3.91 1.48a13.38 13.38 0 00-7 0c-2.73-1.83-3.91-1.48-3.91-1.48A5.07 5.07 0 005 5.797a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 00-.94 2.58v2.87M9 20.027c-3 .973-5.5 0-7-3"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </a>
+                </div>
               )}
-            </footer>
+            </div>
+            <p class="max-w-sm dark:text-neutral-400 text-gray-700">
+              {descripcion}
+            </p>
           </main>
+          <footer class="flex flex-wrap align-baseline justify-items-start gap-2 mt-7">
+            {lenguajes.map((lenguaje) => (
+              <span class="border border-neutral-200 dark:border-neutral-700 font-semibold  rounded-full py-1 px-3 text-xs inline-flex items-center leading-4 text-neutral-900 dark:text-white no-underline">
+                {lenguaje}
+              </span>
+            ))}
+          </footer>
         </article>
       )
     )

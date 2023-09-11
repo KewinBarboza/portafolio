@@ -6,29 +6,43 @@ const { correo } = PERSONA;
 const subject = "Interesado%20en%20en%20trabajar%20juntos%20en%20un%20proyecto";
 ---
 
-<div
-  class="rounded-3xl mx-auto mt-10 bg-gradient-to-r p-[3px] to-[#50c8ff] from-[#3B82F6] shadow-xl"
->
-  <div class="h-full rounded-lg py-16 px-8 md:px-16">
-    <div class="md:flex block justify-between flex-row-reverse mb-12">
-      <img src={URL_PATH_IMAGE} alt="cohete" width="128" />
-      <h2 class="text-white font-bold md:text-5xl text-3xl my-8 md:my-0">
-        ¿ Tienes algún proyecto ? <p class="mt-5">Trabajemos juntos</p>
-      </h2>
+<section class="">
+  <article class="h-full border-y dark:border-slate-800 border-slate-200">
+    <div class="md:flex block justify-between items-center py-16">
+      <div>
+        <h2
+          class="dark:text-white text-slate-800 font-bold md:text-5xl text-6xl my-8 md:my-0"
+        >
+          ¿ Tienes algún proyecto ?
+        </h2>
+        <p class="mt-5 text-4xl dark:text-neutral-300 text-neutral-700">
+          Trabajemos juntos
+        </p>
+      </div>
+      <div class="mt-10 md:mt-0">
+        <a
+          href="https://linkedin.com/in/kewinbarboza"
+          target="_blank"
+          class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+        >
+          <span
+            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+          >
+            Linkedin
+          </span>
+        </a>
+        <a
+          href={`mailto:${correo}?Subject=${subject}`}
+          target="_blank"
+          class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+        >
+          <span
+            class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+          >
+            Gmail
+          </span>
+        </a>
+      </div>
     </div>
-    <!-- <div class="flex justify-around"> -->
-    <a
-      href="https://linkedin.com/in/kewinbarboza"
-      target="_blank"
-      class="border-4 mr-4 bg-[#50c8ff] hover:bg-[#3B82F6] shadow-lg font-bold rounded-xl mt-7 hover:border-[#3B82F6] border-[#50c8ff] hover:px-9 px-8 hover:py-4 transition-all py-3 text-white"
-      >Linkedin
-    </a>
-    <a
-      href={`mailto:${correo}?Subject=${subject}`}
-      target="_blank"
-      class="border-4 bg-[#50c8ff] hover:bg-[#3B82F6] shadow-lg font-bold rounded-xl mt-7 hover:border-[#3B82F6] border-[#50c8ff] hover:px-9 px-8 hover:py-4 transition-all py-3 text-white"
-      >Gmail
-    </a>
-    <!-- </div> -->
-  </div>
-</div>
+  </article>
+</section>
