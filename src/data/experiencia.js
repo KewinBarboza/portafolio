@@ -5,13 +5,19 @@ export default [
     tiempo: "Actualmente",
     proyectos: [
       {
-        titulo: "Participación en el proyecto de chatbot de WhatsApp con kore",
-        año: "2021 - 2022",
+        titulo:
+          "Desarrolle flujos de validaciones para realizar transferencias. Con estas validaciones los usuarios tienen una mayor seguridad a la hora de realizar transferías.",
+        año: "2023",
       },
       {
         titulo:
-          "Participación en la integración de un SDK para generar tokens de seguridad en una aplicación móvil",
-        año: "2021 - 2023",
+          "Desarrolle la integración de los servicios de token digital para poder migrar a los usuarios de token físico a token digital para que puedan hacer transferencias mas rápidas sin necesidad de tener un token físico en la aplicación móvil.",
+        año: "2022 - 2023",
+      },
+      {
+        titulo:
+          "Desarrolle el modulo de consultar saldo a las tarjetas de crédito con Kore.ai. Este modulo sirve para que las personas puedan consultar mas rápido su saldo por WhastApp.",
+        año: "2021 - 2022",
       },
     ],
   },
@@ -21,15 +27,18 @@ export default [
     tiempo: "desde 2020 hasta 2023",
     proyectos: [
       {
-        titulo: "Aplicación móvil para gestionar formularios",
+        titulo:
+          "Diseñé y desarrolle la aplicación móvil para la gestión de formularios, permitiendo a los usuarios sin conexión a internet manejar la información de manera eficiente.",
         año: "2022 - 2023",
       },
       {
-        titulo: "Sistema de Gestión de Seguridad y Salud en el trabajo",
+        titulo:
+          "Junto a un equipo, desarrollamos un Sistema de Gestión de Seguridad y Salud en el Trabajo. Esta innovación permitió a la empresa automatizar sus interacciones con los clientes, eliminando por completo el uso de papel y reemplazando los complicados formularios de Excel por un proceso más sencillo y eficiente para los usuarios.",
         año: "2020 - 2023",
       },
       {
-        titulo: "Landing page corporativa de la empresa",
+        titulo:
+          "Diseñé y Desarrolle la landing page corporativa de la empresa, proporcionando una plataforma para que los usuarios descubran las ventajas de colaborar con la empresa. Esta desarrollo ha contribuido significativamente a aumentar la visibilidad y el reconocimiento de la marca.",
         año: "2020",
       },
     ],
@@ -40,32 +49,35 @@ export default [
     tiempo: "desde 2018 hasta 2021",
     proyectos: [
       {
-        titulo: "Sistema de amaestramiento de llaves",
+        titulo:
+          "Desarrolle e implementé un Sistema de Amaestramiento de Llaves que permitió a los trabajadores reducir el tiempo de preparación de pedidos de dos semanas a solo un día. Este cambio tuvo un impacto significativo en la productividad del departamento encargado.",
         año: "2021",
       },
       {
-        titulo: "Sistema histórico de todos los datos de la empresa",
+        titulo:
+          "Cree un Sistema Histórico de Datos para la empresa, permitiendo a los trabajadores realizar consultas exhaustivas de toda la información corporativa. Esta centralización de datos facilitó un acceso rápido y eficiente a la información para todos los departamentos.",
         año: "2020 - 2021",
       },
       {
-        titulo: "Sistema para el control de asistencia",
+        titulo:
+          "Implementé un Sistema de Control de Asistencia mediante el uso de captahuellas, lo que permitió al Departamento de Recursos Humanos llevar un registro preciso de las horas de entrada y salida de los trabajadores. Esta innovación facilitó la gestión de la nómina y mejoró la eficiencia del departamento.",
         año: "2020",
       },
       {
         titulo:
-          "Sistemas de etiquetas para llevar el control de los productos del almacén",
+          "Implementé un Sistema de Etiquetado para optimizar la gestión de productos en el almacén. Esta solución mejoró significativamente la organización de los productos y permitió a los trabajadores aumentar su productividad.",
         año: "2018 - 2021",
       },
     ],
   },
   {
-    nombre: "Gimnasio Bodyfitness",
+    nombre: "Gimnasio BodyFitness",
     icono: "pesas",
     tiempo: "desde 2018 hasta 2020",
     proyectos: [
       {
         titulo:
-          "Sistema para el administración y control de asistencia para el gimnasio.",
+          "Desarrollé un sistema integral para la administración y control de asistencia en el gimnasio BodyFitness. Esta solución digital mejoró la eficiencia operativa y administrativa del gimnasio y proporcionó una experiencia de usuario optimizada.",
         año: "2018-2020",
       },
     ],
@@ -77,7 +89,7 @@ export default [
     proyectos: [
       {
         titulo:
-          "Creación de cuatro módulos para el sistema de gestión y control de notas del departamento de informática.",
+          "Desarrollé e integré un módulo de creación de documentos al sistema existente, lo que permitió al departamento aumentar su eficiencia en la creación de documentos en un 30%.",
         año: "2016-2017",
       },
     ],
