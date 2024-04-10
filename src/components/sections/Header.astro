@@ -1,6 +1,6 @@
 ---
-import PERSONA from "@data/persona.js";
-const { nombre, profesion, curriculum, foto } = PERSONA;
+import PERSONA from "@data/persona.js"
+const { nombre, profesion, curriculum, foto } = PERSONA
 ---
 
 <header class="container mx-auto md:mt-28 mt-10" id="inicio">
@@ -49,15 +49,23 @@ const { nombre, profesion, curriculum, foto } = PERSONA;
             <a
               href={curriculum}
               target="_blank"
-              class="text-white bg-sky-400 hover:bg-sky-800 border-2 border-sky-700 dark:border-sky-500 focus:ring-4 focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-sky-500 dark:hover:bg-sky-600 focus:outline-none dark:focus:ring-sky-800"
+              class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-blue-500 group-hover:to-cyan-500 hover:text-white text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
             >
-              Descargar CV
+              <span
+                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-md bg-opacity-0"
+              >
+                Descargar CV
+              </span>
             </a>
             <a
               href="#proyectos"
-              class="text-sky-700 hover:text-white border-2 border-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-sky-500 dark:text-sky-500 dark:hover:text-white dark:hover:bg-sky-500 dark:focus:ring-sky-800"
+              class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
             >
-              Proyectos
+              <span
+                class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+              >
+                Proyectos
+              </span>
             </a>
           </div>
         </div>
