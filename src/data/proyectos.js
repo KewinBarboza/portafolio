@@ -7,7 +7,7 @@ export default [
       "HTML",
       "Tailwindcss",
       "React.js",
-      "Cohere",
+      "Cohere"
     ],
     isPrivate: false,
     descripcion:
@@ -15,29 +15,7 @@ export default [
     url: "https://ctext.kewinbarboza.com/",
     url_repositorio: "https://github.com/KewinBarboza/Create-Email",
     imagen:
-      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/create-text.webp",
-  },
-  {
-    nombre: "Guía de GitHub",
-    lenguajes: ["JavaScript", "HTML", "CSS", "Astro", "Tailwindcss"],
-    isPrivate: false,
-    descripcion: "Guía sencilla de GitHub",
-    url: "https://guia-de-github.kewinbarboza.com",
-    url_repositorio: "https://github.com/KewinBarboza/Guia-de-GitHub",
-    imagen:
-      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/Guia-de-GitHub-2023.jpg",
-  },
-
-  {
-    nombre: "Sistema de SG-SST",
-    lenguajes: ["JavaScript", "HTML", "CSS", "MySQL", "Bootstrap", "Laravel"],
-    isPrivate: true,
-    descripcion:
-      "Sistema de Gestión de Seguridad y Salud en el Trabajo para las empresas de Colombia",
-    url: "https://careandsafety.co/",
-    url_repositorio: "",
-    imagen:
-      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/careandsafety.jpg",
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/create-text.webp"
   },
 
   {
@@ -49,7 +27,7 @@ export default [
     url: "https://devjobs.kewinbarboza.com",
     url_repositorio: "https://github.com/KewinBarboza/devjobs",
     imagen:
-      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/devjobs.png",
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/devjobs.png"
   },
 
   {
@@ -61,6 +39,41 @@ export default [
     url: "https://reading-book.kewinbarboza.com/",
     url_repositorio: "https://github.com/KewinBarboza/my-reading-book",
     imagen:
-      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/reading-book.png",
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/reading-book.png"
   },
-];
+
+  {
+    nombre: "Guía de GitHub",
+    lenguajes: ["JavaScript", "HTML", "CSS", "Astro", "Tailwindcss"],
+    isPrivate: false,
+    descripcion: "Guía sencilla de GitHub",
+    url: "https://guia-de-github.kewinbarboza.com",
+    url_repositorio: "https://github.com/KewinBarboza/Guia-de-GitHub",
+    imagen:
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/Guia-de-GitHub-2023.jpg"
+  },
+
+  {
+    nombre: "Sistema de SG-SST",
+    lenguajes: ["JavaScript", "HTML", "CSS", "MySQL", "Bootstrap", "Laravel"],
+    isPrivate: true,
+    descripcion:
+      "Sistema de Gestión de Seguridad y Salud en el Trabajo para las empresas de Colombia",
+    url: "https://careandsafety.co/",
+    url_repositorio: "",
+    imagen:
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/careandsafety.jpg"
+  },
+
+  {
+    nombre: "TCambio",
+    lenguajes: ["JavaScript", "Tailwindcss", "Astro"],
+    isPrivate: true,
+    descripcion:
+      "Calculadora Bolívar a Dólar: Convierte bolívares a dólares y viceversa al instante.",
+    url: "https://tcambio.app",
+    url_repositorio: "",
+    imagen:
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/tcambio-app.png"
+  }
+]
