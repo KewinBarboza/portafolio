@@ -23,7 +23,7 @@ export default [
     lenguajes: ["JavaScript", "HTML", "CSS", "Nextjs", "Tailwindcss"],
     isPrivate: false,
     descripcion:
-      "Aplicación para buscar empleo con repositorio de GitHub y la api de InfoJobs",
+      "Aplicación para buscar empleo con repositorio de GitHub y la API de InfoJobs",
     url: "https://devjobs.kewinbarboza.com",
     url_repositorio: "https://github.com/KewinBarboza/devjobs",
     imagen:
