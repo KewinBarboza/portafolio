@@ -1,104 +1,45 @@
 ---
 import PERSONA from "@data/persona.js"
-
 const { experiencia, proyectos, carrera } = PERSONA
 ---
 
 <section
-  class="grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3 rounded-3xl border dark:border-blue-600/15 border-blue-600/15 p-10"
+  class="grid grid-cols-1 gap-5 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3"
 >
-  <article class="gap-4 p-5">
-    <span class="shrink-0 rounded-lg shadow-lg">
-      <svg
-        width="68"
-        height="68"
-        viewBox="0 0 24 24"
-        stroke-width="1"
-        stroke="#2563eb"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path
-          d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4"
-        ></path>
-        <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
-        <path d="M15 3v4"></path>
-        <path d="M7 3v4"></path>
-        <path d="M3 11h16"></path>
-        <path d="M18 16.496v1.504l1 1"></path>
-      </svg>
-    </span>
-
-    <div>
-      <h2 class="text-4xl font-bold dark:text-blue-100 text-blue-500 mt-3">
-        Experiencia
-      </h2>
-      <p class="mt-1 text-xl dark:text-blue-200 text-blue-500">
-        {experiencia} años
-      </p>
-    </div>
+  <article
+    class="gap-4 p-5 rounded-3xl border dark:border-blue-600/15 border-blue-600/15 bg-gradient-to-tr from-cyan-400/5 to-blue-600/30"
+  >
+    <p
+      class="font-bold font-sans mb-2 text-transparent text-6xl md:text-8xl bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
+    >
+      {experiencia}
+      <span class="text-4xl block">años de</span>
+    </p>
+    <p class="mt-1 text-4xl dark:text-blue-200 text-blue-500">Experiencia</p>
   </article>
 
-  <article class="gap-4 p-5">
-    <span class="shrink-0 rounded-lg shadow-lg">
-      <svg
-        width="68"
-        height="68"
-        viewBox="0 0 24 24"
-        stroke-width="1"
-        stroke="#2563eb"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path
-          d="M4 4m0 1a1 1 0 0 1 1 -1h14a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-14a1 1 0 0 1 -1 -1z"
-        ></path>
-        <path d="M4 8l16 0"></path>
-        <path d="M8 4l0 4"></path>
-      </svg>
-    </span>
-
-    <div>
-      <h2 class="text-4xl font-bold dark:text-blue-100 text-blue-500 mt-3">
-        Proyectos
-      </h2>
-      <p class="mt-1 text-xl dark:text-blue-200 text-blue-500">
-        {proyectos} completados
-      </p>
-    </div>
+  <article
+    class="gap-4 p-5 rounded-3xl border dark:border-blue-600/15 border-blue-600/15 bg-gradient-to-tr from-cyan-400/5 to-blue-600/30"
+  >
+    <p
+      class="font-bold font-sans mb-2 text-transparent text-6xl md:text-8xl bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
+    >
+      {proyectos}
+      <span class="text-4xl block">Proyectos</span>
+    </p>
+    <p class="mt-1 text-4xl dark:text-blue-200 text-blue-500">completados</p>
   </article>
 
-  <article class="gap-4 p-5">
-    <span class="shrink-0 rounded-lg shadow-lg">
-      <svg
-        width="68"
-        height="68"
-        viewBox="0 0 24 24"
-        stroke-width="1"
-        stroke="#2563eb"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-        <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5"></path>
-        <path d="M6 14m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-        <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5"></path>
-      </svg>
-    </span>
-
-    <div>
-      <h2 class="text-4xl font-bold dark:text-blue-100 text-blue-500 mt-3">
-        Universidad
-      </h2>
-      <p class="mt-1 text-xl dark:text-blue-200 text-blue-500">
-        {carrera}
-      </p>
-    </div>
+  <article
+    class="gap-4 p-5 flex flex-col justify-center rounded-3xl border dark:border-blue-600/15 border-blue-600/15 bg-gradient-to-tr from-cyan-400/5 to-blue-600/30"
+  >
+    <p
+      class="font-bold font-sans text-transparent text-2xl md:text-4xl bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
+    >
+      {carrera}
+    </p>
+    <h2 class="text-4xl font-bold dark:text-blue-100 text-blue-500 mt-3">
+      Universidad
+    </h2>
   </article>
 </section>
