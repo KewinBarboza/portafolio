@@ -1,7 +1,7 @@
 export default [
   {
     nombre: "Soluciones Laser",
-    icono: "empresa",
+    icono: "company",
     tiempo: "Actualmente",
     proyectos: [
       {
@@ -11,7 +11,7 @@ export default [
       },
       {
         titulo:
-          "Desarrolle la integración de los servicios de token digital para poder migrar a los usuarios de token físico a token digital para que puedan hacer transferencias más rápidas sin necesidad de tener un token físico en la aplicación móvil.",
+          "Desarrolle la integración de los servicios de token digital para poder migrar a los usuarios de token físico para que puedan hacer transferencias más rápidas sin necesidad de ingresar manualmente un token físico en la aplicación móvil.",
         año: "2022 - 2023"
       },
       {
@@ -23,7 +23,7 @@ export default [
   },
   {
     nombre: "CareAndSafety",
-    icono: "trabajador",
+    icono: "worker",
     tiempo: "desde 2020 hasta 2023",
     proyectos: [
       {
@@ -45,7 +45,7 @@ export default [
   },
   {
     nombre: "Grupo Lockey",
-    icono: "empresa",
+    icono: "company",
     tiempo: "desde 2018 hasta 2021",
     proyectos: [
       {
@@ -72,7 +72,7 @@ export default [
   },
   {
     nombre: "Gimnasio BodyFitness",
-    icono: "pesas",
+    icono: "dumbbells",
     tiempo: "desde 2018 hasta 2020",
     proyectos: [
       {
@@ -84,7 +84,7 @@ export default [
   },
   {
     nombre: "I.U.T “Dr. Federico Rivero Palacio”",
-    icono: "universidad",
+    icono: "university",
     tiempo: "desde 2016 hasta 20217",
     proyectos: [
       {

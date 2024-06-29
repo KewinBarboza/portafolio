@@ -1,8 +1,8 @@
 ---
-import PERSONA from "@data/persona";
-import Icons from "../Icons.astro";
+import PERSONA from "@data/persona"
+import Icons from "../Icons.astro"
 
-const { tecnologias } = PERSONA;
+const { tecnologias } = PERSONA
 ---
 
 <p
@@ -13,8 +13,8 @@ const { tecnologias } = PERSONA;
 <section class="grid grid-cols-4 md:grid-cols-7 gap-5">
   {
     tecnologias.map((tecnologia) => (
-      <span class="text-center flex flex-col overflow-hidden items-center p-2 rounded-lg dark:text-slate-300 text-slate-600 dark:bg-slate-800 bg-neutral-50 w-100">
-        <Icons name={tecnologia} />
+      <span class="text-center flex flex-col overflow-hidden items-center p-2 rounded-lg dark:text-slate-300 text-slate-600 dark:border-blue-600/15 border-blue-600/15 bg-gradient-to-tr from-cyan-400/5 to-blue-600/30 w-100">
+        <Icons name={tecnologia} dark />
         <small class="text-center">{tecnologia}</small>
       </span>
     ))

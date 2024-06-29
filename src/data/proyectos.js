@@ -1,14 +1,7 @@
 export default [
   {
     nombre: "Create Text",
-    lenguajes: [
-      "Astro",
-      "JavaScript",
-      "HTML",
-      "Tailwindcss",
-      "React.js",
-      "Cohere"
-    ],
+    lenguajes: ["Astro", "JavaScript", "HTML", "Tailwind", "Reactjs", "Cohere"],
     isPrivate: false,
     descripcion:
       "App para crear descripción de productos y correos con inteligencia artificial",
@@ -20,7 +13,7 @@ export default [
 
   {
     nombre: "DevJobs",
-    lenguajes: ["JavaScript", "HTML", "CSS", "Nextjs", "Tailwindcss"],
+    lenguajes: ["JavaScript", "HTML", "CSS", "Nextjs", "Tailwind"],
     isPrivate: false,
     descripcion:
       "Aplicación para buscar empleo con repositorio de GitHub y la API de InfoJobs",
@@ -32,7 +25,7 @@ export default [
 
   {
     nombre: "Reading Book",
-    lenguajes: ["JavaScript", "Tailwindcss", "Qwik"],
+    lenguajes: ["JavaScript", "Tailwind", "Qwik"],
     isPrivate: false,
     descripcion:
       "Aplicación para buscar crear listas de lectura de tus libros favoritos",
@@ -44,7 +37,7 @@ export default [
 
   {
     nombre: "Guía de GitHub",
-    lenguajes: ["JavaScript", "HTML", "CSS", "Astro", "Tailwindcss"],
+    lenguajes: ["JavaScript", "HTML", "CSS", "Astro", "Tailwind"],
     isPrivate: false,
     descripcion: "Guía sencilla de GitHub",
     url: "https://guia-de-github.kewinbarboza.com",
@@ -55,7 +48,7 @@ export default [
 
   {
     nombre: "Sistema de SG-SST",
-    lenguajes: ["JavaScript", "HTML", "CSS", "MySQL", "Bootstrap", "Laravel"],
+    lenguajes: ["JavaScript", "HTML", "CSS", "MySql", "Bootstrap", "Laravel"],
     isPrivate: true,
     descripcion:
       "Sistema de Gestión de Seguridad y Salud en el Trabajo para las empresas de Colombia",
@@ -67,7 +60,7 @@ export default [
 
   {
     nombre: "TCambio",
-    lenguajes: ["JavaScript", "Tailwindcss", "Astro"],
+    lenguajes: ["JavaScript", "Tailwind", "Astro"],
     isPrivate: true,
     descripcion:
       "Calculadora Bolívar a Dólar: Convierte bolívares a dólares y viceversa al instante.",

@@ -1,6 +1,12 @@
 ---
-import iconSvg  from '../../public/icon-svg.js';
-const { name } = Astro.props
+import { mapIcons } from "../icons/mapIcons"
+const { name, props, dark } = Astro.props
+
+const iconSvg = dark ? mapIcons.DARK[name] : mapIcons[name]
+
+if (!iconSvg) {
+  console.error(`Icon "${name}" not found`)
+}
 ---
 
-<Fragment set:html={iconSvg[name]} />
+<Fragment set:html={iconSvg} />
