@@ -1,6 +1,7 @@
 ---
 import PROYECTOS from "@data/proyectos.js"
-import Icon from "./../Icons.astro"
+import Icons from "./../Icons.astro"
+import { IconName } from "@icons/mapIcons"
 ---
 
 <div class="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 lg:mt-10">
@@ -37,7 +38,7 @@ import Icon from "./../Icons.astro"
             <div class="flex flex-wrap align-baseline justify-items-start gap-2">
               {lenguajes.map((lenguaje) => (
                 <span class="border border-neutral-200 dark:border-blue-600/30 font-semibold flex justify-between rounded-full py-1 px-3 text-xs gap-x-2 items-center leading-4 text-neutral-900 dark:text-white no-underline">
-                  <Icon name={lenguaje} width="15" height="15" />
+                  <Icons name={lenguaje as IconName} />
                   {lenguaje}
                 </span>
               ))}

@@ -1,6 +1,12 @@
 ---
-import { mapIcons } from "../icons/mapIcons"
-const { name, props, dark } = Astro.props
+import { mapIcons, IconName } from "../icons/mapIcons"
+
+interface Props {
+  name: IconName
+  dark?: boolean
+}
+
+const { name, dark } = Astro.props
 
 const iconSvg = dark ? mapIcons.DARK[name] : mapIcons[name]
 

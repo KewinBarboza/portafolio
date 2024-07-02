@@ -1,6 +1,7 @@
 ---
 import PERSONA from "@data/persona"
 import Icons from "../Icons.astro"
+import { IconName } from "@icons/mapIcons"
 
 const { tecnologias } = PERSONA
 ---
@@ -14,7 +15,7 @@ const { tecnologias } = PERSONA
   {
     tecnologias.map((tecnologia) => (
       <span class="text-center flex flex-col overflow-hidden items-center p-2 rounded-lg dark:text-slate-300 text-slate-600 dark:border-blue-600/15 border-blue-600/15 bg-gradient-to-tr from-cyan-400/5 to-blue-600/30 w-100">
-        <Icons name={tecnologia} dark />
+        <Icons name={tecnologia as IconName} dark />
         <small class="text-center">{tecnologia}</small>
       </span>
     ))

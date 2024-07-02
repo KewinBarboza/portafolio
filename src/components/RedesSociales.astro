@@ -1,13 +1,14 @@
 ---
 import REDES_SOCIALES from "@data/redes_sociales.js"
 import Icons from "./Icons.astro"
+import { IconName } from "@icons/mapIcons"
 ---
 
 {
   REDES_SOCIALES.map(({ url, icon, nombre }) => (
     <li class="mx-2">
       <a href={url} target="_blank" class="dark:text-white" title={nombre}>
-        <Icons name={icon} />
+        <Icons name={icon as IconName} />
       </a>
     </li>
   ))
