@@ -68,5 +68,17 @@ export default [
     url_repositorio: "",
     imagen:
       "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/tcambio-app.png"
+  },
+
+  {
+    nombre: "Salary-Dev",
+    lenguajes: ["JavaScript", "Tailwind", "Nextjs", "Vercel AI SDK"],
+    isPrivate: false,
+    descripcion:
+      "Esta herramienta te permite calcular tu salario como programador, tomando en cuenta diferentes factores como lenguaje, país y tipo de proyecto a desarrollar.",
+    url: "https://salary-dev.kewinbarboza.com/",
+    url_repositorio: "https://github.com/KewinBarboza/sueldos-dev-ia",
+    imagen:
+      "https://raw.githubusercontent.com/KewinBarboza/banner-proyectos/master/salary-dev.webp"
   }
 ]
