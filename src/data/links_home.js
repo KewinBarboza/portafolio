@@ -1,14 +1,14 @@
 export default [
   {
     titulo: "Inicio",
-    url: "#inicio",
+    url: "/#inicio"
   },
   {
     titulo: "Experiencia",
-    url: "#experiencia",
+    url: "/#experiencia"
   },
   {
     titulo: "Proyectos",
-    url: "#proyectos",
-  },
-];
+    url: "/#proyectos"
+  }
+]

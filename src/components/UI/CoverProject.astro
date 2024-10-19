@@ -1,0 +1,126 @@
+---
+import Icons from "./../Icons.astro"
+import { IconName } from "@icons/mapIcons"
+import { Image } from "astro:assets"
+import tcambio from "./../../../public/image/tcambio-t.png"
+
+const { firstProyect } = Astro.props
+---
+
+<section
+  class="flex flex-col-reverse md:flex-row justify-between h-auto rounded-xl mt-6 backdrop-blur-3xl dark:border-blue-600/15 border-blue-600/15 bg-gradient-to-tr from-cyan-400/5 to-blue-600/30"
+>
+  <div
+    class="h-auto flex flex-col px-5 md:px-10 justify-center overflow-hidden text-white"
+  >
+    <h4 class="text-4xl md:text-5xl lg:text-6xl font-bold md:mb-1 mb-2">
+      {firstProyect.nombre}
+    </h4>
+    <p class="lg:text-lg md:text-base text-pretty">
+      {firstProyect.descripcion}
+    </p>
+    <div class="flex flex-wrap md:mt-5 mt-1 gap-x-2">
+      {
+        firstProyect.lenguajes.map((lenguaje) => (
+          <span class="flex font-normal text-sm md:text-base lg:text-lg gap-x-1 px-2 py-1 rounded-lg items-center leading-2 text-neutral-900 dark:text-white no-underline">
+            <Icons name={lenguaje as IconName} />
+            {lenguaje}
+          </span>
+        ))
+      }
+    </div>
+    <div
+      class="lg:w-2/4 mb-2 flex md:flex-col gap-x-3 text-lg font-semibold leading-7 mt-2 md:mt-6"
+    >
+      <a
+        href={firstProyect.url}
+        target="_blank"
+        class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-blue-500 group-hover:to-cyan-500 hover:text-white text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+      >
+        <span
+          class="relative px-5 py-2.5 w-full transition-all ease-in duration-75 text-center bg-gradient-to-br from-cyan-500 to-blue-500 rounded-md bg-opacity-0"
+        >
+          Ver proyecto
+        </span>
+      </a>
+
+      <a
+        href={`/project/${firstProyect.slug}`}
+        class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+      >
+        <span
+          class="relative px-5 py-2.5 transition-all ease-in duration-75 w-full bg-white text-center dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+        >
+          Ver mas
+        </span>
+      </a>
+    </div>
+  </div>
+  <Image
+    class="lg:h-[32rem] lg:w-[32rem] md:h-[24rem] md:w-[24rem] h-[18rem] w-[18rem] object-cover mx-auto"
+    src={tcambio}
+    width={tcambio.width}
+    height={tcambio.height}
+    alt={`Foto del proyecto ${firstProyect.nombre}`}
+  />
+</section>
+
+<!-- <section
+  class="backdrop-blur-3xl dark:border-blue-600/15 border-blue-600/15 bg-gradient-to-tr from-cyan-400/5 to-blue-600/30 h-96 rounded-xl mt-6 relative"
+>
+  <Image
+    class="lg:h-[32rem] lg:w-[32rem] md:h-[20rem] md:w-[20rem] object-cover absolute -top-14 md:-top-16 lg:-top-28 right-2 rounded-lg"
+    src={tcambio}
+    width={tcambio.width}
+    height={tcambio.height}
+    alt={`Foto del proyecto ${firstProyect.nombre}`}
+  />
+  <div
+    class="h-full flex flex-col px-5 md:px-10 justify-start overflow-hidden text-white"
+  >
+    <h4
+      class="text-lg md:text-5xl lg:text-6xl font-bold md:mt-16 mt-48 md:mb-1 mb-2"
+    >
+      {firstProyect.nombre}
+    </h4>
+    <p class="lg:text-xl md:text-base text-pretty">
+      {firstProyect.descripcion}
+    </p>
+    <div class="flex md:mt-5 mt-1 align-baseline gap-2 md:gap-y-2 md:gap-x-5">
+      {
+        firstProyect.lenguajes.map((lenguaje) => (
+          <span class="font-semibold flex py-2 text-sm md:text-base lg:text-lg gap-x-2 items-center leading-4 text-neutral-900 dark:text-white no-underline">
+            <Icons name={lenguaje as IconName} />
+            {lenguaje}
+          </span>
+        ))
+      }
+    </div>
+    <div
+      class="mb-2 flex md:flex-col gap-x-3 text-lg font-semibold leading-7 md:size-52 mt-2 md:mt-6"
+    >
+      <a
+        href={firstProyect.url}
+        target="_blank"
+        class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-blue-500 group-hover:to-cyan-500 hover:text-white text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+      >
+        <span
+          class="relative px-5 py-2.5 transition-all ease-in duration-75 text-center bg-gradient-to-br from-cyan-500 to-blue-500 rounded-md bg-opacity-0"
+        >
+          Ver proyecto
+        </span>
+      </a>
+
+      <a
+        href={`/project/${firstProyect.slug}`}
+        class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+      >
+        <span
+          class="relative px-5 py-2.5 transition-all ease-in duration-75 w-full bg-white text-center dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+        >
+          Ver mas
+        </span>
+      </a>
+    </div>
+  </div>
+</section> -->
