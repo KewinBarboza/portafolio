@@ -4,42 +4,70 @@ import Icons from "./../Icons.astro"
 import { IconName } from "@icons/mapIcons"
 ---
 
-<section class="mt-10">
-  <ol class="relative ml-8">
-    {
-      EXPERIENCIA.map(({ nombre, icono, proyectos, tiempo }) => (
-        <li class="bg-transparent bg-gradient-to-t from-transparent via-blue-500 to-transparent ml-1">
-          <div class="dark:bg-slate-900 bg-white ml-[2px]">
-            <span class="absolute flex items-center justify-center w-14 h-14 rounded-full -left-6 bg-gradient-to-r from-cyan-500 to-blue-500 bg-slate-900 p-2">
-              <div class="dark:bg-slate-900 bg-white rounded-full p-2 w-[53px] h-[53px] flex justify-items-center items-center dark:text-white text-blue-500">
-                <Icons name={icono as IconName} />
-              </div>
-            </span>
-            <div class="ml-10 grid grid-cols-1 md:grid-cols-2">
-              <div>
-                <h3 class="flex items-center mb-1 text-4xl font-semibold text-blue-500 dark:text-white">
-                  {nombre}
-                </h3>
-                <time class="block mb-2 text-xl font-normal leading-none text-neutral-800 dark:text-neutral-300">
-                  {tiempo}
-                </time>
-              </div>
-              <div>
-                {proyectos.map(({ titulo, año }) => (
-                  <div class="mt-6 md:mt-0">
-                    <p class="dark:text-neutral-400 text-neutral-900 text-md font-medium">
-                      {año}
-                    </p>
-                    <p class="mb-6 text-lg font-light text-gray-900 dark:text-white">
-                      _ {titulo}
-                    </p>
-                  </div>
-                ))}
-              </div>
+<!-- <article class="mt-10">
+  <section class="grid grid-cols-2 gap-2">
+  {
+    EXPERIENCIA.map(({ nombre, icono, proyectos, tiempo }) => (
+      <aside class="flex items-start gap-2 sticky top-20 h-full dark:bg-slate-900 bg-white rounded-xl overflow-hidden">
+        <div class="absolute -z-10 h-full w-full bg-transparent"> <div class="absolute bottom-0 -top-[500px] left-0 right-0 bg-[radial-gradient(circle_240px_at_30%_600px,#3b82f645,transparent)]"></div> </div>
+        <div class="pl-5 pt-4">
+          <h3 class="text-4xl font-semibold text-blue-500 dark:text-white mb-2">
+            {nombre}
+          </h3>
+          <time class="block text-xl font-normal leading-none text-neutral-800 dark:text-neutral-300">
+            {tiempo}
+          </time>
+        </div>
+      </aside>
+      <main class="pb-10 my-5">
+        {proyectos.map(({ titulo, año }) => (
+          <div class="mt-6 md:mt-0">
+            <p class="text-blue-500 text-2xl font-bold">
+              {año}
+            </p>
+            <p class="mb-6 text-xl font-light text-pretty text-gray-900 dark:text-white leading-8">
+              _ {titulo}
+            </p>
+          </div>
+        ))}
+      </main>
+    ))
+  }
+</section> -->
+<ol class="relative ml-8">
+  {
+    EXPERIENCIA.map(({ nombre, icono, proyectos, tiempo }) => (
+      <li class="bg-transparent bg-gradient-to-t from-transparent via-blue-500 to-transparent ml-1">
+        <div class="dark:bg-slate-900 bg-white ml-[2px]">
+          <span class="absolute flex items-center justify-center w-14 h-14 rounded-full -left-6 bg-gradient-to-r from-cyan-500 to-blue-500 bg-slate-900 p-2">
+            <div class="dark:bg-slate-900 bg-white rounded-full p-2 w-[53px] h-[53px] flex justify-items-center items-center dark:text-white text-blue-500">
+              <Icons name={icono as IconName} />
+            </div>
+          </span>
+          <div class="ml-10 grid grid-cols-1 md:grid-cols-2">
+            <div>
+              <h3 class="flex items-center mb-1 text-4xl font-semibold text-blue-500 dark:text-white">
+                {nombre}
+              </h3>
+              <time class="block mb-2 text-xl font-normal leading-none text-neutral-800 dark:text-neutral-300">
+                {tiempo}
+              </time>
+            </div>
+            <div>
+              {proyectos.map(({ titulo, año }) => (
+                <div class="mt-6 md:mt-0">
+                  <p class="dark:text-neutral-400 text-neutral-900 text-md font-medium">
+                    {año}
+                  </p>
+                  <p class="mb-6 text-lg font-light text-gray-900 dark:text-white">
+                    _ {titulo}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-        </li>
-      ))
-    }
-  </ol>
-</section>
+        </div>
+      </li>
+    ))
+  }
+</ol>
