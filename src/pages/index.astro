@@ -13,9 +13,10 @@ import NavigationMobile from "src/components/UI/NavigationMobile.astro"
 ---
 
 <Layout title="Kewin Barboza | Desarrollador web, Frontend, JavaScript, React">
-  <Header />
-
-  <main class="container mx-auto">
+  <Section id="">
+    <Header />
+  </Section>
+  <main class="px-4">
     <Section id="">
       <SobreMi />
     </Section>
@@ -32,7 +33,9 @@ import NavigationMobile from "src/components/UI/NavigationMobile.astro"
       <Proyectos />
     </Section>
 
-    <Tecnologias />
+    <Section id="">
+      <Tecnologias />
+    </Section>
 
     <Section id="recomendaciones">
       <Title title="Recomendaciones" />
