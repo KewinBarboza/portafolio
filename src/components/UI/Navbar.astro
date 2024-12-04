@@ -7,10 +7,10 @@ import BtnDarkMode from "./BtnDarkMode.astro"
 ---
 
 <nav
+  class="bg-white/90 z-10 w-100 items-center fixed top-0 px-3 md:top-3 dark:bg-transparent w-full mx-auto lg:max-w-4xl md:max-w-2xl md:rounded-full"
   id="navbar"
-  class="bg-white/90 w-full z-10 w-100 items-center fixed top-0 dark:bg-transparent"
 >
-  <div class="container mx-auto h-auto flex justify-between py-3">
+  <div class="mx-auto h-auto flex justify-between py-3">
     <Logo />
     <ul class="md:flex justify-between items-center hidden">
       {
@@ -35,9 +35,11 @@ import BtnDarkMode from "./BtnDarkMode.astro"
 <style>
   @keyframes add-shadow {
     to {
-      box-shadow: 0 5px 50px -5px hsla(0, 0%, 100%, 0.1),
+      box-shadow:
+        0 5px 50px -5px hsla(0, 0%, 100%, 0.1),
         0 0 0 1px hsla(0, 0%, 100%, 0.1);
       background: rgba(107, 107, 107, 0.3);
+      padding-inline: 20px;
     }
   }
 
@@ -45,7 +47,7 @@ import BtnDarkMode from "./BtnDarkMode.astro"
     backdrop-filter: blur(10px);
     animation: add-shadow linear both;
     position: sticky;
-    top: 0;
+    top: 3;
   }
 
   #navbar {

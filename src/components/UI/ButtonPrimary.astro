@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string
+  href: string
+  target?: "_parent" | "_blank"
+}
+
+const { title, href, target } = Astro.props
+---
+
+<a
+  class="inline-block rounded-2xl border-2 text-center hover:border-accent/85 border-accent bg-accent px-6 py-3 text-lg font-medium text-secondary hover:bg-accent/85 focus:outline-none focus:ring active:text-secondary"
+  href={href}
+  target={target}
+>
+  {title}
+</a>

@@ -34,31 +34,51 @@ const imageEntries = await Promise.all(
 )
 ---
 
-<a
-  href={slug}
-  class="hover:ring-4 hover:transition hover:ring-blue-500 rounded-2xl group"
->
+<a href={slug} class="hover:ring-4 hover:transition rounded-2xl group">
   <div
-    class="bg-gradient-to-tr from-cyan-400/5 to-blue-600/30 p-4 group-hover:scale-95 transition ease-in delay-75 h-full overflow-hidden ring-gray-900/5 sm:mx-auto sm:max-w-lg rounded-2xl"
+    class="group-hover:scale-95 transition ease-in delay-75 h-full overflow-hidden sm:mx-auto sm:max-w-lg rounded-xl relative"
   >
-    <Image
-      transition:name={`cover-project-${slug}`}
-      src={imageEntries[imagen].optimized.src}
-      class="w-full aspect-video object-cover rounded-2xl mb-5"
-      decoding="async"
-      height="286"
-      width="229"
-      alt={`proyecto ${nombre}`}
-    />
-    <main class="flex-auto min-w-full px-3">
-      <h2 class="dark:text-white text-neutral-800 text-2xl font-medium mb-0">
+    <div class="bg-custom p-5 rounded-lg">
+      <Image
+        transition:name={`cover-project-${slug}`}
+        src={imageEntries[imagen].optimized.src}
+        class="w-full aspect-video object-cover rounded-2xl mb-5"
+        decoding="async"
+        height="286"
+        width="229"
+        alt={`proyecto ${nombre}`}
+      />
+    </div>
+    <main class="flex-auto min-w-full py-5">
+      <h2 class="dark:text-accent text-neutral-800 text-2xl font-medium mb-0">
         {nombre}
       </h2>
       <p
-        class="max-w-sm dark:text-neutral-200 text-gray-700 text-base text-pretty"
+        class="max-w-sm dark:text-neutral-200 text-primary dark:text-secondary text-xl text-pretty"
       >
         {descripcion}
       </p>
     </main>
   </div>
 </a>
+
+<style>
+  .bg-custom {
+    display: grid;
+    border-radius: 16px;
+    align-items: center;
+    justify-items: center;
+    place-items: center;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    background: linear-gradient(
+      rgba(42, 60, 117, 0.2) 0,
+      rgba(6, 8, 34, 0.2) calc(100% + 40%),
+      #3b82f6 calc(100% + 80%),
+      #fff calc(100% + 120%)
+    );
+    transition:
+      box-shadow 0.2s ease,
+      --gradient-offset 1s ease;
+  }
+</style>
