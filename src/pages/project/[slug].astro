@@ -33,11 +33,11 @@ const project = orderRandom.splice(0, 3)
 ---
 
 <Layout title={`${entry.nombre} | Desarrollado por Kewin Barboza`}>
-  <main class="w-full mx-auto lg:max-w-4xl md:max-w-2xl my-4">
-    <a class="text-primary dark:text-secondary transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 px-2 py-1" href="/#proyectos">← Volver atrás</a>
+  <main class="w-full mx-auto lg:max-w-4xl md:max-w-2xl my-4 px-8 md:px-0">
+    <a class="text-primary dark:text-secondary transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 px-2 py-1 text-lg" href="/#proyectos">← Volver atrás</a>
 
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-      <header class="md:col-span-3 rounded-xl overflow-hidden">
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10 mt-10">
+      <header class="bg-custom md:col-span-3 rounded-xl overflow-hidden">
         <Image
           class="w-full aspect-video object-cover"
           src={images[imagePath]()}
@@ -48,7 +48,7 @@ const project = orderRandom.splice(0, 3)
         <h1 class="dark:text-secondary text-primary text-5xl font-medium mb-0 font-sans">
           {entry.nombre}
         </h1>
-        <h2 class="dark:text-white text-neutral text-lg font-sans">
+        <h2 class="dark:text-white text-neutral text-lg font-sans text-balance">
           {entry.descripcion}
         </h2>
         <p class="dark:text-white text-neutral text-xl mt-7 text-pretty font-sans">
@@ -101,3 +101,24 @@ const project = orderRandom.splice(0, 3)
     </section>
   </main>
 </Layout>
+
+<style>
+  .bg-custom {
+    display: grid;
+    border-radius: 16px;
+    align-items: center;
+    justify-items: center;
+    place-items: center;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    background: linear-gradient(
+      rgba(42, 60, 117, 0.2) 0,
+      rgba(6, 8, 34, 0.2) calc(100% + 40%),
+      #3b82f6 calc(100% + 80%),
+      #fff calc(100% + 120%)
+    );
+    transition:
+      box-shadow 0.2s ease,
+      --gradient-offset 1s ease;
+  }
+</style>
