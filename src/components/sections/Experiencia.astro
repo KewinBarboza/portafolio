@@ -2,36 +2,47 @@
 import EXPERIENCIA from "@data/experiencia.js"
 import Icons from "./../Icons.astro"
 import { IconName } from "@icons/mapIcons"
-import { Image } from "astro:assets"
 ---
 
-<article class="mt-10">
+<article>
   <ol class="relative ml-8">
     {
-      EXPERIENCIA.map(({ nombre, icono, proyectos, tiempo }) => (
-        <li class="bg-transparent bg-gradient-to-t from-transparent via-blue-500 to-transparent ml-1">
-          <div class="dark:bg-slate-900 bg-white ml-[2px]">
-            <span class="absolute flex items-center justify-center w-14 h-14 rounded-full -left-6 bg-gradient-to-r from-cyan-500 to-blue-500 bg-slate-900 p-2">
-              <div class="dark:bg-slate-900 bg-white rounded-full p-2 w-[53px] h-[53px] flex justify-items-center items-center dark:text-white text-blue-500">
+      EXPERIENCIA.map(({ nombre, icono, proyectos, tiempo, cargo }) => (
+        <li class="bg-transparent bg-gradient-to-t from-transparent via-accent to-transparent ml-2">
+          <div class="dark:bg-primary bg-secondary ml-[2px]">
+            <span class="absolute flex items-center justify-center w-16 h-16 rounded-full -left-6 bg-gradient-to-r from-blue-400/85 to-blue-600/75 dark:from-cyan-400/5 dark:to-blue-600/30 bg-slate-900 p-1">
+              <div class="dark:bg-slate-900/85 bg-secondary rounded-full aspect-square p-2 w-full h-full flex justify-items-center items-center dark:text-secondary text-accent">
                 <Icons name={icono as IconName} />
               </div>
             </span>
-            <div class="ml-10 grid grid-cols-1 md:grid-cols-2">
-              <div>
-                <h3 class="flex items-center mb-1 text-4xl font-semibold text-blue-500 dark:text-white">
-                  {nombre}
-                </h3>
-                <time class="block mb-2 text-xl font-normal leading-none text-neutral-800 dark:text-neutral-300">
+            <div class="ml-10 md:ml-14">
+              <div class="md:flex justify-between items-center">
+                <div>
+                  <h3 class="text-2xl md:text-3xl italic font-semibold text-accent">
+                    {cargo}
+                  </h3>
+                  <p class="flex items-center mb-1 text-xl font-semibold text-primary dark:text-secondary">
+                    {nombre}
+                  </p>
+                </div>
+                <time class="block mb-2 text-lg font-normal leading-none text-neutral-800 dark:text-accent">
                   {tiempo}
                 </time>
               </div>
-              <div>
-                {proyectos.map(({ titulo, año }) => (
-                  <div class="mt-6 md:mb-10">
-                    <p class="text-blue-500 text-2xl font-bold">{año}</p>
-                    <p class="mb-6 text-xl font-light text-balance text-gray-900 dark:text-white leading-8 *:font-semibold">
-                      _ <Fragment set:html={titulo} />
-                    </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14 mt-7">
+                {proyectos.map(({ titulo, año, className }) => (
+                  <div
+                    class:list={[
+                      "custom-shadow p-4 md:p-8 rounded-xl",
+                      className
+                    ]}
+                  >
+                    <p class="text-accent text-2xl font-semibold mb-5">{año}</p>
+                    <div class="">
+                      <p class="text-xl font-normal text-pretty text-gray-900 dark:text-blue-50 leading-8 *:font-semibold dark:[*:text-blue-400] *:text-blue-300">
+                        _ <Fragment set:html={titulo} />
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>

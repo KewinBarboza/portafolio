@@ -1,53 +1,89 @@
 ---
 import PERSONA from "@data/persona.js"
+import ButtonPrimary from "../UI/ButtonPrimary.astro"
+import ButtonSecondary from "../UI/ButtonSecondary.astro"
 const { correo } = PERSONA
 const subject = "Interesado%20en%20en%20trabajar%20juntos%20en%20un%20proyecto"
 ---
 
-<section class="">
-  <article
-    class="relative overflow-hidden h-full border p-[2px] rounded-3xl dark:border-blue-600/15 border-blue-600/15 backdrop-blur-3xl"
-  >
-    <span
-      class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#0284c7_0%,#393BB2_50%,#0284c7_100%)]"
-    ></span>
+<article class="overflow-x-clip flex-grow relative min-w-full">
+  <section class="divider py-40 flex flex-col justify-center items-center">
     <div
-      class="flex flex-col h-full w-full items-center justify-center rounded-3xl py-12 bg-gray-100 dark:bg-slate-900 gap-x-16 text-sm font-medium text-gray-50 backdrop-blur-3xl dark:border-blue-600/15 border-blue-600/15 bg-gradient-to-tr from-cyan-400/5 to-blue-600/30"
+      class="text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary/30 dark:from-secondary dark:to-secondary/30"
     >
-      <div>
-        <h2
-          class="dark:text-white text-sky-500 font-bold md:text-5xl text-5xl text-center my-8 md:my-0 text-pretty"
-        >
-          ¿ Tienes algún proyecto ?
-        </h2>
-        <p class="text-center text-4xl dark:text-white text-sky-500 font-light">
-          Trabajemos juntos
-        </p>
-      </div>
-      <div class="mt-10 md:mt-8">
-        <a
-          href="https://linkedin.com/in/kewinbarboza"
-          target="_blank"
-          class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
-        >
-          <span
-            class="relative px-8 py-3 transition-all ease-in duration-75 rounded-md"
-          >
-            Linkedin
-          </span>
-        </a>
-        <a
-          href={`mailto:${correo}?Subject=${subject}`}
-          target="_blank"
-          class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
-        >
-          <span
-            class="relative px-8 py-3 transition-all ease-in duration-75 rounded-md"
-          >
-            Gmail
-          </span>
-        </a>
-      </div>
+      <h2
+        class="font-sans font-bold md:text-5xl text-5xl text-center my-8 md:my-0 text-pretty"
+      >
+        ¿ Tienes algún proyecto ?
+      </h2>
+      <p class="font-sans text-center text-4xl font-semibold mb-5">
+        Trabajemos juntos
+      </p>
     </div>
-  </article>
-</section>
+    <div class="my-5">
+      <ButtonPrimary
+        title="Linkedin"
+        href="https://linkedin.com/in/kewinbarboza"
+        target="_blank"
+      />
+      <ButtonSecondary
+        title="Gmail"
+        href=`mailto:${correo}?Subject=${subject}`
+      />
+    </div>
+  </section>
+</article>
+
+<style>
+  .divider {
+    width: 100%;
+    height: 1px;
+    position: relative;
+  }
+
+  .divider:before {
+    bottom: 0;
+    z-index: 0;
+    content: "";
+    width: 1000px;
+    height: 40px;
+    position: absolute;
+    left: calc(50% - 500px);
+    border-bottom: 1px solid;
+    border-image-source: linear-gradient(
+      90deg,
+      transparent,
+      rgba(59, 130, 246, 0.5) 50%,
+      transparent
+    );
+    border-image-slice: 1;
+    background: radial-gradient(
+      50% 100% at 50% 100%,
+      rgba(137, 139, 255, 0.1) 0,
+      rgba(1, 3, 20, 0) 100%
+    );
+  }
+
+  .divider:after {
+    top: 0;
+    z-index: 0;
+    content: "";
+    width: 500px;
+    height: 80px;
+    position: absolute;
+    left: calc(50% - 250px);
+    border-top: 1px solid;
+    border-image-source: linear-gradient(
+      90deg,
+      transparent,
+      #3b82f683 50%,
+      transparent
+    );
+    border-image-slice: 1;
+    background: radial-gradient(
+      43.9% 100% at 50% 0,
+      #3b82f628 0,
+      rgba(2, 15, 139, 0) 100%
+    );
+  }
+</style>

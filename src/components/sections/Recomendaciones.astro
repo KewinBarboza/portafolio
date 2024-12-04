@@ -2,15 +2,18 @@
 import RECOMENDACIONES from "@data/recomendaciones.js"
 ---
 
-<section
-  class="grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 lg:mt-10"
->
+<section class="grid gap-5 sm:grid-cols-1 md:grid-cols-2">
   {
     RECOMENDACIONES.map(({ nombre, empresa, descripcion, cargo, image }) => (
-      <article class="rounded-xl border-2 border-gray-100 dark:border-[#3b82f645] p-5 shadow-sm">
-        <header class="flex items-center mt-2 gap-x-4">
+      <article class="rounded-xl flex flex-col justify-between custom-shadow p-7">
+        <main class="flex-auto mb-3">
+          <p class="font-base text-lg text-pretty text-primary dark:text-secondary mb-0">
+            {descripcion}
+          </p>
+        </main>
+        <footer class="flex items-center mt-2 gap-x-4">
           {image === "" ? (
-            <div class="w-14 h-14 bg-blue-900 rounded-full" />
+            <div class="w-14 h-14 bg-accent rounded-full" />
           ) : (
             <img
               src={image}
@@ -24,20 +27,15 @@ import RECOMENDACIONES from "@data/recomendaciones.js"
           )}
 
           <div class="">
-            <p class="font-semibold font-sans text-gray-800 dark:text-gray-200 text-xl">
+            <p class="font-semibold font-sans text-primary dark:text-secondary text-xl">
               {nombre}
             </p>
-            <p class="font-normal font-sans text-gray-800 dark:text-gray-400 text-sm ">
+            <p class="font-normal font-sans text-primary dark:text-gray-400 text-sm ">
               {cargo}
             </p>
-            <p class=" text-blue-400 text-sm block">{empresa}</p>
+            <p class=" text-accent text-sm block">{empresa}</p>
           </div>
-        </header>
-        <main class="flex-auto mt-3">
-          <p class="font-base text-base text-pretty text-gray-500 dark:text-gray-200 mb-0">
-            {descripcion}
-          </p>
-        </main>
+        </footer>
       </article>
     ))
   }
