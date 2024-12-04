@@ -1,10 +1,11 @@
-import { bold, strong } from "../lib/html.ts"
+import { bold } from "../lib/html.ts"
 
 export default [
   {
     nombre: "Soluciones Laser",
     icono: "company",
     tiempo: "Actualmente",
+    cargo: "Digital developer II",
     proyectos: [
       {
         titulo: `Desarrolle flujos de validaciones para ${bold(
@@ -13,7 +14,8 @@ export default [
           "los usuarios tienen una mayor seguridad"
         )} a la hora de realizar transferías.`,
         año: "2023",
-        img: "/experience/transferencias.svg"
+        img: "/experience/transferencias.svg",
+        className: ""
       },
       {
         titulo: `Desarrolle la integración de los ${bold(
@@ -24,7 +26,8 @@ export default [
           "ingresar manualmente un token físico"
         )} en la aplicación móvil.`,
         año: "2022 - 2023",
-        img: "/experience/flujo-transferencias.svg"
+        img: "/experience/flujo-transferencias.svg",
+        className: ""
       },
       {
         titulo: `Colabore en el desarrollo del módulo para ${bold(
@@ -33,7 +36,8 @@ export default [
           "consultar más rápido su saldo"
         )} por WhatsApp. `,
         año: "2021 - 2022",
-        img: "/experience/saldo-whatsapp.svg"
+        img: "/experience/saldo-whatsapp.svg",
+        className: "col-span-1 md:col-span-2"
       }
     ]
   },
@@ -41,6 +45,7 @@ export default [
     nombre: "CareAndSafety",
     icono: "worker",
     tiempo: "desde 2020 hasta 2023",
+    cargo: "Desarrollador Frontend Senior",
     proyectos: [
       {
         titulo: `Diseñé y desarrolle la aplicación móvil para la ${bold(
@@ -49,7 +54,8 @@ export default [
           "sin conexión a internet"
         )} manejar la información de manera eficiente.`,
         año: "2022 - 2023",
-        img: "/experience/app-offline.svg"
+        img: "/experience/app-offline.svg",
+        className: "col-span-1 md:col-span-2"
       },
       {
         titulo: `Junto a un equipo, desarrollamos un ${bold(
@@ -60,7 +66,8 @@ export default [
           "formularios de Excel por un proceso más sencillo y eficiente"
         )} para los usuarios.`,
         año: "2020 - 2023",
-        img: "/experience/app-careandsafety.svg"
+        img: "/experience/app-careandsafety.svg",
+        className: ""
       },
       {
         titulo: `Diseñé y Desarrolle la ${bold(
@@ -69,7 +76,8 @@ export default [
           "aumentar la visibilidad y el reconocimiento de la marca."
         )}`,
         año: "2020",
-        img: "/experience/landing-careandsafety.svg"
+        img: "/experience/landing-careandsafety.svg",
+        className: ""
       }
     ]
   },
@@ -77,6 +85,7 @@ export default [
     nombre: "Grupo Lockey",
     icono: "company",
     tiempo: "desde 2018 hasta 2021",
+    cargo: "Desarrollador Frontend Full Stack",
     proyectos: [
       {
         titulo: `Desarrolle e implementé un sistema de ${bold(
@@ -85,7 +94,8 @@ export default [
           "tiempo de preparación de pedidos de dos semanas a solo un día"
         )}. Este cambio tuvo un impacto significativo en la productividad del departamento encargado.`,
         año: "2021",
-        img: "/experience/app-keys.svg"
+        img: "/experience/app-keys.svg",
+        className: ""
       },
       {
         titulo: `Cree un Sistema Histórico de Datos para la empresa, permitiendo a los ${bold(
@@ -94,7 +104,8 @@ export default [
           "acceso rápido y eficiente"
         )} a la información para todos los departamentos.`,
         año: "2020 - 2021",
-        img: "/experience/app-history.svg"
+        img: "/experience/app-history.svg",
+        className: ""
       },
       {
         titulo: `Implementé un sistema de ${bold(
@@ -105,7 +116,8 @@ export default [
           "la gestión de la nómina"
         )} y mejoró la eficiencia del departamento.`,
         año: "2020",
-        img: "/experience/app-asistencia.svg"
+        img: "/experience/app-asistencia.svg",
+        className: ""
       },
       {
         titulo: `Desarrollé un sistema de etiquetado para ${bold(
@@ -114,7 +126,8 @@ export default [
           "organización de los productos"
         )} y permitió a los ${bold("trabajadores aumentar su productividad")}.`,
         año: "2018 - 2021",
-        img: "/experience/app-ticket.svg"
+        img: "/experience/app-ticket.svg",
+        className: ""
       }
     ]
   },
@@ -122,6 +135,7 @@ export default [
     nombre: "Gimnasio BodyFitness",
     icono: "dumbbells",
     tiempo: "desde 2018 hasta 2020",
+    cargo: "Desarrollador web",
     proyectos: [
       {
         titulo: `Desarrollé junto a un grupo de trabajo un sistema integral para la ${bold(
@@ -130,14 +144,16 @@ export default [
           "mejoró la eficiencia operativa y administrativa"
         )} del gimnasio y proporcionó una experiencia de usuario optimizada.`,
         año: "2018-2020",
-        img: "/experience/app-asistencia-gym.svg"
+        img: "/experience/app-asistencia-gym.svg",
+        className: "col-span-1 md:col-span-2"
       }
     ]
   },
   {
     nombre: "I.U.T “Dr. Federico Rivero Palacio”",
     icono: "university",
-    tiempo: "desde 2016 hasta 20217",
+    tiempo: "desde 2016 hasta 2017",
+    cargo: "Desarrollador web",
     proyectos: [
       {
         titulo: `Desarrollé e integré un módulo de ${bold(
@@ -146,7 +162,8 @@ export default [
           "aumentar su eficiencia en la creación de documentos en un 30%."
         )}`,
         año: "2016-2017",
-        img: "/experience/app-document.svg"
+        img: "/experience/app-document.svg",
+        className: "col-span-1 md:col-span-2"
       }
     ]
   }
