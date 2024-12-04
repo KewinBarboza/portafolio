@@ -23,7 +23,15 @@ module.exports = {
         "2xl": "15rem"
       }
     },
-    extend: {}
+    extend: {
+      colors: {
+        accent: "#3b82f6",
+        primary: "#171717",
+        secondary: "#ffffff",
+        // tertiary: "#f472b6",
+        neutral: "#262626"
+      }
+    }
   },
   plugins: []
 }
