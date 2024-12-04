@@ -1,11 +1,14 @@
 ---
 export interface Props {
-  id: string;
+  id: string
 }
 
-const { id } = Astro.props;
+const { id } = Astro.props
 ---
 
-<section class="my-28 scroll-mt-14" id={id}>
+<section
+  class="scroll-mt-14 w-full mx-auto lg:max-w-4xl md:max-w-2xl my-24"
+  id={id}
+>
   <slot />
 </section>
