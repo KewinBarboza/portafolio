@@ -1,12 +1,29 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from "astro/config"
 
-import tailwind from "@astrojs/tailwind";
-import vercel from '@astrojs/vercel/static';
+import tailwindcss from "@tailwindcss/vite"
+import vercel from "@astrojs/vercel"
+import react from "@astrojs/react"
 
 export default defineConfig({
-  integrations: [tailwind()],
-  site: 'https://kewinbarboza.github.io/',
-  adapter:vercel({
-    analytics:true
-  })
-});
+  vite: {
+    plugins: [tailwindcss()]
+  },
+
+  site: "https://kewinbarboza.com",
+
+  adapter: vercel({
+    analytics: true
+  }),
+
+  integrations: [react()],
+
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.google(),
+        name: "Onest",
+        cssVariable: "--font-onest"
+      }
+    ]
+  }
+})
