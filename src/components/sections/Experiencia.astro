@@ -1,55 +1,107 @@
 ---
-import EXPERIENCIA from "@data/experiencia.js"
-import Icons from "./../Icons.astro"
-import { IconName } from "@icons/mapIcons"
+import { Image } from "astro:assets"
+import EXPERIENCIA from "@/data/experiencia.js"
+import ButtonPrimary from "@/components/UI/ButtonPrimary.astro"
+
+import iut from "@/assets/logos-empresas/iut.png"
+import sl from "@/assets/logos-empresas/sl.png"
+import lockey from "@/assets/logos-empresas/lockey.png"
+import bodyfitness from "@/assets/logos-empresas/bodyfitness.jpg"
+import careandsafety from "@/assets/logos-empresas/careandsafety.png"
+
+const logos = {
+  iut,
+  sl,
+  lockey,
+  bodyfitness,
+  careandsafety
+}
+
+const slWork = EXPERIENCIA[0]
+const { tiempo, proyectos, nombre, icono, cargo, lugar, stack } = EXPERIENCIA[1]
+
+const shortExperiencia = [
+  slWork,
+  {
+    nombre: nombre,
+    cargo: cargo,
+    icono: icono,
+    tiempo: tiempo,
+    proyectos: proyectos.slice(0, 2),
+    lugar,
+    stack
+  }
+]
 ---
 
-<article>
-  <ol class="relative ml-8">
-    {
-      EXPERIENCIA.map(({ nombre, icono, proyectos, tiempo, cargo }) => (
-        <li class="bg-transparent bg-gradient-to-t from-transparent via-accent to-transparent ml-2">
-          <div class="dark:bg-primary bg-secondary ml-[2px]">
-            <span class="absolute flex items-center justify-center w-16 h-16 rounded-full -left-6 bg-gradient-to-r from-blue-400/85 to-blue-600/75 dark:from-cyan-400/5 dark:to-blue-600/30 bg-slate-900 p-1">
-              <div class="dark:bg-slate-900/85 bg-secondary rounded-full aspect-square p-2 w-full h-full flex justify-items-center items-center dark:text-secondary text-accent">
-                <Icons name={icono as IconName} />
-              </div>
-            </span>
-            <div class="ml-10 md:ml-14">
-              <div class="md:flex justify-between items-center">
-                <div>
-                  <h3 class="text-2xl md:text-3xl italic font-semibold text-accent">
-                    {cargo}
-                  </h3>
-                  <p class="flex items-center mb-1 text-xl font-semibold text-primary dark:text-secondary">
-                    {nombre}
-                  </p>
+<article class="mt-10">
+  <main class="mask-b-from-50% mask-b-to-100%">
+    <ol class="relative">
+      {
+        shortExperiencia.map(
+          ({ nombre, icono, proyectos, tiempo, cargo, lugar, stack }) => (
+            <li class="mb-20">
+              <header class="md:flex gap-4 w-full">
+                <div class="p-1 size-16 flex justify-items-center items-center rounded-xl overflow-hidden custom-shadow bg-accent/90 backdrop-blur-[2px] aspect-[5/4]">
+                  <Image
+                    src={logos[icono]}
+                    alt={`${nombre} logo`}
+                    class="w-full h-full object-contain"
+                  />
                 </div>
-                <time class="block mb-2 text-lg font-normal leading-none text-neutral-800 dark:text-accent">
-                  {tiempo}
-                </time>
-              </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14 mt-7">
-                {proyectos.map(({ titulo, año, className }) => (
-                  <div
-                    class:list={[
-                      "custom-shadow p-4 md:p-8 rounded-xl",
-                      className
-                    ]}
-                  >
-                    <p class="text-accent text-2xl font-semibold mb-5">{año}</p>
-                    <div class="">
-                      <p class="text-xl font-normal text-pretty text-gray-900 dark:text-blue-50 leading-8 *:font-semibold dark:[*:text-blue-400] *:text-blue-300">
-                        _ <Fragment set:html={titulo} />
+                <div class="md:flex justify-between items-center w-full mt-3 md:mt-0">
+                  <div>
+                    <div class="flex items-end mb-1 gap-x-2">
+                      <h3 class="text-lg md:text-xl font-semibold dark:text-white text-neutral-600">
+                        {cargo}
+                      </h3>
+                      <span class="text-base text-foreground dark:text-muted-foreground">
+                        -
+                      </span>
+                      <p class="text-base text-foreground dark:text-muted-foreground">
+                        {nombre}
                       </p>
                     </div>
+
+                    <div class="flex items gap-x-1">
+                      {stack.map((item) => (
+                        <span class="inline-flex items-center rounded-md border px-1 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-nowrap border-transparent bg-muted-foreground/10 text-secondary-foreground align-middle text-xs dark:text-muted-foreground">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="mt-4 md:mt-0">
+                    <p class="flex items-center italic text-xs text-neutral-800 dark:text-gray-300">
+                      {lugar}
+                    </p>
+                    <time class="block mt-1 md:mt-0 mb-2 text-sm font-normal leading-none text-neutral-800 dark:text-white">
+                      {tiempo}
+                    </time>
+                  </div>
+                </div>
+              </header>
+              <main class="mb-5">
+                {proyectos.map(({ titulo, año, className }) => (
+                  <div
+                    class:list={["py-2 md:py-5 md:grid grid-cols-4", className]}
+                  >
+                    <div class=" dark:text-white text-neutral-600 text-base font-medium">
+                      {año}
+                    </div>
+                    <p class="md:col-span-3 text-pretty text-foreground dark:text-muted-foreground leading-7 *:font-medium *:text-foreground  dark:*:text-muted-foreground text-base">
+                      <Fragment set:html={titulo} />
+                    </p>
                   </div>
                 ))}
-              </div>
-            </div>
-          </div>
-        </li>
-      ))
-    }
-  </ol>
+              </main>
+            </li>
+          )
+        )
+      }
+    </ol>
+  </main>
+  <footer class="flex justify-center">
+    <ButtonPrimary title="Ver mas " href="/experiencia" />
+  </footer>
 </article>

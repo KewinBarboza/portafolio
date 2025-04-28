@@ -1,18 +1,44 @@
 ---
-import PROYECTOS from "@data/proyectos.js"
-import CardProject from "../UI/CardProject.astro"
-import CoverProject from "../UI/CoverProject.astro"
-
-const firstProyect = PROYECTOS[5]
+import { Image } from "astro:assets"
+import PROYECTOS from "@/data/proyectos.js"
 ---
-<CoverProject firstProyect={firstProyect} />
 
-<div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+<ul class="columns-1 md:columns-2 gap-4">
   {
-    PROYECTOS.filter((p) => p.imagen !== "5").map(
-      ({ nombre, imagen, descripcion, slug }) => (
-        <CardProject slug={`/project/${slug}`} nombre={nombre}, imagen={imagen} descripcion={descripcion} />
-      )
-    )
+    PROYECTOS.map((project) => (
+      <li>
+        <a
+          href={`/project/${project.slug}`}
+          class={`group rounded-xl overflow-hidden transition-shadow h-fit mb-4 p-0.5 block ${project.class}`}
+        >
+          <article
+            class={` z-0 overflow-hidden relative rounded-xl before:absolute before:w-full before:aspect-square before:left-0 before:top-0 before:rounded-full before:blur-3xl before:opacity-80 before:-z-10 before:transition ${project.gradient}`}
+          >
+            <header class="flex items-center gap-3 p-6">
+              <h3
+                class="text-2xl font-bold text-neutral-800 dark:text-white"
+                transition:name={`title-project-${project.slug}`}
+                transition:animate="fade"
+              >
+                {project.nombre}
+              </h3>
+            </header>
+            <p class="text-pretty text-foreground dark:text-muted-foreground leading-7 text-lg font-semibold px-6">
+              {project.descripcion}
+            </p>
+            <div class="w-full h-[1px] dark:bg-white/5 bg-black/5 m-4" />
+            <Image
+              class="w-[calc(100%_-_24px)] max-w-96 group-hover:translate-y-3 group-hover:-translate-x-1 transition group-hover:scale-[101%] translate-y-4 h-auto ml-auto rounded-tl-xl"
+              src={`/image/${project.imagen.src}`}
+              transition:name={`cover-project-${project.slug}`}
+              alt={project.imagen.alt}
+              width={project.imagen.width}
+              height={project.imagen.height}
+              inferSize={true}
+            />
+          </article>
+        </a>
+      </li>
+    ))
   }
-</div>
+</ul>

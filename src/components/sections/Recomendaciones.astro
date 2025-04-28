@@ -1,23 +1,34 @@
 ---
-import RECOMENDACIONES from "@data/recomendaciones.js"
+import { Image } from "astro:assets"
+import RECOMENDACIONES from "@/data/recomendaciones.js"
+
+import alexander from "@/assets/image/alexander.webp"
+import romulo from "@/assets/image/romulo.webp"
+import camilo from "@/assets/image/camilo.webp"
+
+const foto = {
+  alexander,
+  romulo,
+  camilo
+}
 ---
 
-<section class="grid gap-5 sm:grid-cols-1 md:grid-cols-2">
+<article class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
   {
     RECOMENDACIONES.map(({ nombre, empresa, descripcion, cargo, image }) => (
-      <article class="rounded-xl flex flex-col justify-between custom-shadow p-7">
+      <article class="rounded-xl flex flex-col justify-between custom-shadow p-7 backdrop-blur-[2px]">
         <main class="flex-auto mb-3">
-          <p class="font-base text-lg text-pretty text-primary dark:text-secondary mb-0">
+          <p class="font-base text-lg text-pretty text-foreground dark:text-muted-foreground mb-0">
             {descripcion}
           </p>
         </main>
-        <footer class="flex items-center mt-2 gap-x-4">
+        <footer class="flex items-start mt-2 gap-x-4">
           {image === "" ? (
-            <div class="w-14 h-14 bg-accent rounded-full" />
+            <div class="aspect-[5/4] object-cover w-14 h-14 bg-foreground rounded-full" />
           ) : (
-            <img
-              src={image}
-              class=" aspect-[5/4] object-cover w-14 h-14 rounded-full"
+            <Image
+              src={foto[image]}
+              class="aspect-[5/4] object-cover w-14 h-14 rounded-full"
               loading="lazy"
               decoding="async"
               height="36"
@@ -26,17 +37,19 @@ import RECOMENDACIONES from "@data/recomendaciones.js"
             />
           )}
 
-          <div class="">
-            <p class="font-semibold font-sans text-primary dark:text-secondary text-xl">
+          <div class="w-full flex flex-col items-start">
+            <p class="font-semibold text-primary dark:text-secondary text-xl">
               {nombre}
             </p>
-            <p class="font-normal font-sans text-primary dark:text-gray-400 text-sm ">
+            <p class="mb-4 font-normal text-primary dark:text-gray-400 text-sm ">
               {cargo}
             </p>
-            <p class=" text-accent text-sm block">{empresa}</p>
+            <p class="dark:text-neutral-200 text-neutral-600 text-sm block">
+              {empresa}
+            </p>
           </div>
         </footer>
       </article>
     ))
   }
-</section>
+</article>

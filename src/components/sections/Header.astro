@@ -1,69 +1,75 @@
 ---
-import PERSONA from "@data/persona.js"
-import ButtonSecondary from "../UI/ButtonSecondary.astro"
-import ButtonPrimary from "../UI/ButtonPrimary.astro"
-const { nombre, profesion, curriculum, foto } = PERSONA
+import { Image } from "astro:assets"
+import PERSONA from "@/data/persona.js"
+import ButtonPrimary from "@/components/UI/ButtonPrimary.astro"
+import foto from "@/assets/image/foto-2.png"
+import { BtnDownloadCv } from "@/components/react/btn-download-cv"
+
+const { nombre, profesion, curriculum, proyectos, carrera } = PERSONA
 ---
 
-<header id="inicio">
-  <div class="text-center">
-    <div
-      class="absolute inset-x-0 bottom-1/2 top-0 dark:text-slate-600 text-slate-200 [mask-image:linear-gradient(white,transparent)]"
-    >
-      <svg aria-hidden="true" class="absolute inset-0 h-full w-full">
-        <defs>
-          <pattern
-            id=":Rbm:"
-            width="128"
-            height="128"
-            patternUnits="userSpaceOnUse"
-            x="50%"
-            y="100%"
+<header
+  id="inicio"
+  class="scroll-mt-24 w-full mx-auto lg:max-w-4xl md:max-w-3xl md:px-10 md:my-24"
+>
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-5 md:gap-15 gap-10 items-center">
+      <div class="text-start col-span-3">
+        <div class="mb-5 flex gap-2 flex-wrap justify-center md:justify-start">
+          <span
+            class="inline-flex items-center justify-center rounded-xl custom-shadow px-3 py-1 text-lg font-medium backdrop-blur-3xl"
           >
-            <path d="M0 128V.5H128" fill="none" stroke="currentColor"></path>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#:Rbm:)"></rect>
-      </svg>
-    </div>
-    <div class="relative max-w-6xl mx-auto">
-      <div
-        class="flex justify-between items-center flex-col-reverse md:flex-row"
-      >
-        <div class="text-start">
-          <h2
-            class="text-4xl md:text-3xl font-semibold font-sans mb-5 text-primary dark:text-secondary"
-          >
-            Hola, soy
-          </h2>
-          <h1
-            class="font-extrabold animate-text-gradient font-sans mt-3 mb-2 text-transparent text-5xl md:text-6xl bg-clip-text bg-gradient-to-r from-accent via-accent to-accent/85"
-          >
-            {nombre}
-          </h1>
-          <p
-            class="font-light text-2xl md:text-4xl font-sans text-primary dark:text-secondary"
-          >
-            {profesion}
-          </p>
+            <span
+              class="bg-gradient-to-t bg-clip-text text-transparent from-neutral-950 via-gray-600 to-gray-400 dark:from-primary/30 dark:via-white dark:to-white"
+            >
+              {carrera}
+            </span>
+          </span>
 
-          <div class="mt-10 flex gap-4">
-            <ButtonPrimary title="Proyectos" href="#proyectos" />
-            <ButtonSecondary
+          <span
+            class="inline-flex items-center justify-center rounded-xl custom-shadow px-3 py-1 text-lg font-medium backdrop-blur-3xl"
+          >
+            <span
+              class="bg-gradient-to-t bg-clip-text text-transparent from-neutral-950 via-gray-600 to-gray-400 dark:from-primary/30 dark:via-white dark:to-white"
+            >
+              +{proyectos} Proyectos
+            </span>
+          </span>
+        </div>
+        <h1
+          class="flex items-center justify-center md:justify-start font-bold animate-text-gradient mb-2 text-transparent md:text-start text-5xl md:text-5xl lg:text-6xl bg-clip-text bg-gradient-to-br from-primary to-primary/30 dark:from-secondary dark:to-secondary/30"
+        >
+          {nombre}
+        </h1>
+        <p
+          class="col-span-3 text-pretty font-normal text-foreground dark:text-muted-foreground leading-7 text-xl md:text-start text-center"
+        >
+          {profesion} con <strong class="font-semibold"
+            >+6 años de experiencia</strong
+          > trabando para grandes empresas
+        </p>
+
+        <div class="mt-10 w-full text-center md:text-start">
+          <BtnDownloadCv client:only="react">
+            <ButtonPrimary
+              slot="fallback"
               title="Descargar CV"
               href={curriculum}
               target="_blank"
             />
-          </div>
+          </BtnDownloadCv>
         </div>
-        <div class="p-4 md:p-0">
-          <img
+      </div>
+      <div
+        class="flex justify-center items-center w-full h-full bg-gradient-to-b from-blue-900/40 via-blue-100/5 to-blue-50/0 backdrop-blur-3xl md:p-2 col-span-3 md:col-span-2 rounded-4xl"
+      >
+        <div class="-mt-24 mask-b-from-50% mask-b-to-90%">
+          <Image
+            class="rounded-3xl object-cover aspect-[5/8]"
             src={foto}
-            class="h-full w-full md:mx-auto lg:mx-0 md:w-96 rounded-xl mb-10 md:mb-0"
-            height="460"
-            width="281"
-            alt="foto"
-            title="kewin barboza"
+            alt={`${nombre} desarrollador FrontEnd`}
+            width={325}
+            height={325}
           />
         </div>
       </div>

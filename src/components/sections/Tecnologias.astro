@@ -1,7 +1,7 @@
 ---
-import PERSONA from "@data/persona"
-import Icons from "../Icons.astro"
-import { IconName } from "@icons/mapIcons"
+import PERSONA from "@/data/persona"
+import Icons from "@/components/Icons.astro"
+import { IconName } from "@/icons/mapIcons"
 
 const { tecnologias } = PERSONA
 ---
@@ -11,13 +11,15 @@ const { tecnologias } = PERSONA
 >
   Tecnologías
 </p>
-<section class="grid grid-cols-2 md:grid-cols-4 gap-5">
+<article
+  class="mt-8 mb-8 grid grid-cols-2 auto-rows-fr justify-center items-center content-center text-white gap-6 mx-auto sm:grid-cols-3 md:gap-x-16 lg:flex lg:flex-wrap lg:gap-x-20 xl:gap-x-28"
+>
   {
     tecnologias.map((tecnologia) => (
-      <span class="text-center flex flex-col overflow-hidden items-center p-4 rounded-lg dark:text-slate-300 text-slate-600 custom-shadow w-100 bg-transparent bg-gradient-to-tr from-secondary via-secondary dark:from-primary dark:via-primary dark:to-accent to-accent">
+      <div class="text-center flex flex-col overflow-hidden items-center p-4 rounded-xl dark:text-slate-300 text-slate-600">
         <Icons name={tecnologia as IconName} dark />
         <small class="text-center">{tecnologia}</small>
-      </span>
+      </div>
     ))
   }
-</section>
+</article>
