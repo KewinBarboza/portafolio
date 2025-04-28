@@ -1,54 +1,76 @@
-// Icons
-const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
-const themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
+const primaryColorScheme = "" // "light" | "dark"
 
-// Theme vars
-const ls = window.localStorage;
-const userTheme = ls.getItem("color-theme");
-const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+// Get theme data from local storage
+const currentTheme = localStorage.getItem("theme")
 
-// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-if (
-  ls.getItem("color-theme") === "dark" ||
-  (!("color-theme" in ls) && systemTheme)
-) {
-  document.documentElement.classList.add("dark");
-} else {
-  document.documentElement.classList.remove("dark");
+function getPreferTheme() {
+  // return theme value in local storage if it is set
+  if (currentTheme) return currentTheme
+
+  // return primary color scheme if it is set
+  if (primaryColorScheme) return primaryColorScheme
+
+  // return user device's prefer color scheme
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light"
 }
 
-// Change the icons inside the button based on previous settings
-if (userTheme === "dark" || (!("color-theme" in ls) && systemTheme)) {
-  themeToggleLightIcon?.classList.remove("hidden");
-} else {
-  themeToggleDarkIcon?.classList.remove("hidden");
+let themeValue = getPreferTheme()
+
+function setPreference() {
+  localStorage.setItem("theme", themeValue)
+  reflectPreference()
 }
 
-const themeToggleBtn = document.getElementById("theme-toggle");
+function reflectPreference() {
+  document.firstElementChild.setAttribute("data-theme", themeValue)
 
-themeToggleBtn?.addEventListener("click", function () {
-  // toggle icons inside button
-  themeToggleDarkIcon?.classList.toggle("hidden");
-  themeToggleLightIcon?.classList.toggle("hidden");
+  document.querySelector("#theme-btn")?.setAttribute("aria-label", themeValue)
 
-  // if set via local storage previously
-  if (ls.getItem("color-theme")) {
-    if (ls.getItem("color-theme") === "light") {
-      document.documentElement.classList.add("dark");
-      ls.setItem("color-theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      ls.setItem("color-theme", "light");
-    }
+  // Get a reference to the body element
+  const body = document.body
 
-    // if NOT set via local storage previously
-  } else {
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-      ls.setItem("color-theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      ls.setItem("color-theme", "dark");
-    }
+  // Check if the body element exists before using getComputedStyle
+  if (body) {
+    // Get the computed styles for the body element
+    const computedStyles = window.getComputedStyle(body)
+
+    // Get the background color property
+    const bgColor = computedStyles.backgroundColor
+
+    // Set the background color in <meta theme-color ... />
+    document
+      .querySelector("meta[name='theme-color']")
+      ?.setAttribute("content", bgColor)
   }
-});
+}
+
+// set early so no page flashes / CSS is made aware
+reflectPreference()
+
+window.onload = () => {
+  function setThemeFeature() {
+    // set on load so screen readers can get the latest value on the button
+    reflectPreference()
+
+    // now this script can find and listen for clicks on the control
+    document.querySelector("#theme-btn")?.addEventListener("click", () => {
+      themeValue = themeValue === "light" ? "dark" : "light"
+      setPreference()
+    })
+  }
+
+  setThemeFeature()
+
+  // Runs on view transitions navigation
+  document.addEventListener("astro:after-swap", setThemeFeature)
+}
+
+// sync with system changes
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", ({ matches: isDark }) => {
+    themeValue = isDark ? "dark" : "light"
+    setPreference()
+  })
