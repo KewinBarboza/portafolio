@@ -1,9 +1,12 @@
 ---
-import PERSONA from "@data/persona.js"
-import ViewTransitions from "astro/components/ViewTransitions.astro"
-import Footer from "src/components/sections/Footer.astro"
-import Navbar from "src/components/UI/Navbar.astro"
+import { ClientRouter } from "astro:transitions"
+import "@/styles/global.css"
 
+import { Font } from "astro:assets"
+
+import PERSONA from "@/data/persona.js"
+import Footer from "@/components/sections/Footer.astro"
+import Navbar from "@/components/UI/Navbar.astro"
 export interface Props {
   title: string
 }
@@ -11,8 +14,9 @@ export interface Props {
 const { title } = Astro.props as Props
 ---
 
-<!doctype html>
-<html lang="en" class="scroll-smooth dark">
+<Font cssVariable="--font-onest" preload />
+
+<html lang="en" class="scroll-smooth" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,15 +27,33 @@ const { title } = Astro.props as Props
     <meta name="description" content={PERSONA.sobre_mi} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <title>{title}</title>
-    <ViewTransitions />
+
+    <script src="/darkMode.js" is:inline async></script>
+
+    <ClientRouter />
+
+    <style>
+      body {
+        font-family: var(--font-onest);
+      }
+    </style>
   </head>
 
-  <body class="dark:bg-primary bg-secondary">
+  <body class="dark:bg-[#020617] bg-secondary overflow-x-hidden relative">
+    <div
+      class="absolute top-0 z-[-2] h-screen w-screen bg-[radial-gradient(100%_73%_at_99%_-16%,rgba(124,179,255,0.22)_0,rgba(156,158,249,20%)_50%,rgba(60,60,60,0)_100%)] dark:bg-[radial-gradient(100%_139%_at_99%_23%,rgba(219,229,235,0.22)_0,rgba(110,108,108,3%)_50%,rgba(60,60,60,0)_100%)]"
+    >
+    </div>
+
+    <div
+      class="absolute inset-0 -z-10 h-full w-full dark:bg-[radial-gradient(#78789924_1px,transparent_1px)] bg-[radial-gradient(#2e2e310d_1px,transparent_1px)] [background-size:16px_16px]"
+    >
+    </div>
     <Navbar />
     <slot />
 
     <Footer />
-  </body><script src="/darkMode.js" defer is:inline></script>
+  </body>
 </html>
 
 <style is:global>
