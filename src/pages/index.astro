@@ -1,36 +1,32 @@
 ---
-import Header from "../components/sections/Header.astro"
-import Experiencia from "../components/sections/Experiencia.astro"
-import Proyectos from "../components/sections/Proyectos.astro"
-import Recomendaciones from "../components/sections/Recomendaciones.astro"
-import SobreMi from "../components/sections/SobreMi.astro"
-import Title from "../components/UI/Title.astro"
-import Layout from "../layouts/Layout.astro"
-import Section from "../layouts/Section.astro"
-import Tecnologias from "src/components/sections/Tecnologias.astro"
-import Trabajemos from "src/components/sections/Trabajemos.astro"
-import NavigationMobile from "src/components/UI/NavigationMobile.astro"
+import Layout from "@/layouts/Layout.astro"
+import Section from "@/layouts/Section.astro"
+
+import Header from "@/components/sections/Header.astro"
+import Experiencia from "@/components/sections/Experiencia.astro"
+import Proyectos from "@/components/sections/Proyectos.astro"
+import Recomendaciones from "@/components/sections/Recomendaciones.astro"
+import Title from "@/components/UI/Title.astro"
+import Tecnologias from "@/components/sections/Tecnologias.astro"
+import Trabajemos from "@/components/sections/Trabajemos.astro"
 ---
 
 <Layout title="Kewin Barboza | Desarrollador web, Frontend, JavaScript, React">
-  <Section id="">
-    <Header />
-  </Section>
-  <main class="px-4">
-    <Section id="">
-      <SobreMi />
-    </Section>
+  <Header />
 
+  <main class="px-4">
     <Section id="experiencia">
       <Title title="Experiencia" />
       <Experiencia />
     </Section>
 
-    <Trabajemos />
-
     <Section id="proyectos">
       <Title title="Proyectos" />
       <Proyectos />
+    </Section>
+
+    <Section id="">
+      <Trabajemos />
     </Section>
 
     <Section id="">
@@ -41,7 +37,5 @@ import NavigationMobile from "src/components/UI/NavigationMobile.astro"
       <Title title="Recomendaciones" />
       <Recomendaciones />
     </Section>
-
-    <NavigationMobile />
   </main>
 </Layout>
