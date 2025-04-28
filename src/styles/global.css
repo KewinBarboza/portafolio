@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme inline {
+
+
+  --color-accent: hsla(0, 0%, 100%, .1);
+  --color-primary: #171717;
+  --color-secondary: #ffffff;
+  --color-neutral: #262626;
+  --color-muted-foreground: hsl(215 20.2% 65.1%);
+  --color-foreground: hsl(215.4 16.3% 46.9%);
+  --spacing-default: 1rem;
+  --spacing-sm: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 5rem;
+  --spacing-2xl: 15rem;
+}
