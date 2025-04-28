@@ -1,33 +1,34 @@
 ---
-import LINKS_HOME from "@data/links_home.js"
-import Link from "./Link.astro"
-import Logo from "./Logo.astro"
-import RedesSociales from "./../RedesSociales.astro"
-import BtnDarkMode from "./BtnDarkMode.astro"
+import LINKS_HOME from "@/data/links_home.js"
+
+import Link from "@/components/UI/Link.astro"
+import RedesSociales from "@/components/RedesSociales.astro"
+import BtnThemeToggle from "@/components/UI/BtnThemeToggle.astro"
 ---
 
 <nav
-  class="bg-white/90 z-10 w-100 items-center fixed top-0 px-3 md:top-3 dark:bg-transparent w-full mx-auto lg:max-w-4xl md:max-w-2xl md:rounded-full"
+  class="items-center fixed px-3 top-11/12 md:top-3 bg-transparent mx-auto max-w-max rounded-full custom-shadow z-50"
   id="navbar"
 >
-  <div class="mx-auto h-auto flex justify-between items-center py-3">
-    <Logo />
-    <ul class="md:flex justify-between items-center hidden">
+  <div
+    class="mx-auto h-auto flex justify-center md:justify-between items-center py-2"
+  >
+    <ul class="flex justify-start items-center">
       {
-        LINKS_HOME.map(({ url, titulo }) => (
+        LINKS_HOME.map(({ url, titulo, icon }) => (
           <li>
-            <Link url={url} titulo={titulo} />
+            <Link url={url} titulo={titulo} icon={icon} />
           </li>
         ))
       }
     </ul>
-    <div class="flex">
-      <ul
-        class="flex justify-between items-center dark:text-white text-slate-800"
-      >
+    <div class="flex md:ms-14 ms-5">
+      <ul class="flex justify-between items-center">
         <RedesSociales />
+        <li class="mx-2">
+          <BtnThemeToggle />
+        </li>
       </ul>
-      <BtnDarkMode />
     </div>
   </div>
 </nav>
@@ -38,13 +39,12 @@ import BtnDarkMode from "./BtnDarkMode.astro"
       box-shadow:
         0 5px 50px -5px hsla(0, 0%, 100%, 0.1),
         0 0 0 1px hsla(0, 0%, 100%, 0.1);
-      background: rgba(107, 107, 107, 0.3);
-      padding-inline: 20px;
+      background: rgb(43 42 42 / 13%);
     }
   }
 
   #navbar {
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     animation: add-shadow linear both;
     position: sticky;
     top: 3;

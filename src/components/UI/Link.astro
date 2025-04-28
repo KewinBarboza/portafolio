@@ -1,10 +1,14 @@
 ---
-const { titulo, url } = Astro.props
+import { IconName } from "@/icons/mapIcons"
+import Icons from "@/components/Icons.astro"
+
+const { titulo, url, icon } = Astro.props
 ---
 
 <a
   href={url}
-  class="font-sans text-primary text-lg dark:text-secondary mx-2 px-2 py-4 hover:border-b-4 border-accent hover:text-accent font-semibold"
+  class="flex md:flex-row flex-col place-items-center items-center gap-x-2 text-foreground dark:text-white text-xs md:text-base px-4 py-1 hover:bg-neutral-700/10 hover:text-neutral-700 dark:hover:bg-neutral-100/30 font-medium dark:hover:text-neutral-100 rounded-full"
 >
-  {titulo}
+  <Icons name={icon as IconName} />
+  <span class="text-center">{titulo}</span>
 </a>
