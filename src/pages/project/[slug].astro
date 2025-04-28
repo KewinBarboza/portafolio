@@ -1,13 +1,15 @@
 ---
-import PROYECTOS from "@data/proyectos.js"
-import Layout from "src/layouts/Layout.astro"
-import Icons from "../../components/Icons.astro"
-import { IconName } from "@icons/mapIcons"
 import Image from "astro/components/Image.astro"
-import CardProject from "src/components/UI/CardProject.astro"
-import Trabajemos from "src/components/sections/Trabajemos.astro"
-import ButtonPrimary from "src/components/UI/ButtonPrimary.astro"
-import ButtonSecondary from "src/components/UI/ButtonSecondary.astro"
+import PROYECTOS from "@/data/proyectos.js"
+import PERSONA from "@/data/persona.js"
+
+import Layout from "@/layouts/Layout.astro"
+import { IconName } from "@/icons/mapIcons"
+
+import Icons from "@/components/Icons.astro"
+import CardProject from "@/components/UI/CardProject.astro"
+import Trabajemos from "@/components/sections/Trabajemos.astro"
+import ButtonSecondary from "@/components/UI/ButtonSecondary.astro"
 
 export async function getStaticPaths() {
   return PROYECTOS.map((entry) => ({
@@ -17,108 +19,123 @@ export async function getStaticPaths() {
 }
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "../../../src/assets/img-projects/*.{jpeg,jpg,png,gif}"
+  "/src/assets/img-projects/*.{jpeg,jpg,png,gif}"
 )
 
 const { entry } = Astro.props
-const imagePath = `../../assets/img-projects/${Number(entry.imagen) + 1}.png`
+
+const imagePath = `/src/assets/${entry.imagen.srcPoster}`
+
 if (!images[imagePath])
   throw new Error(
     `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
   )
 
-const orderRandom =  [...PROYECTOS].sort(() => Math.random() - 0.5);
-const project = orderRandom.splice(0, 3)
-
+const orderRandom = [...PROYECTOS].sort(() => Math.random() - 0.5)
+const project = orderRandom.splice(0, 2)
 ---
 
-<Layout title={`${entry.nombre} | Desarrollado por Kewin Barboza`}>
-  <main class="w-full mx-auto lg:max-w-4xl md:max-w-2xl my-4 px-8 md:px-0">
-    <a class="text-primary dark:text-secondary transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 px-2 py-1 text-lg" href="/#proyectos">← Volver atrás</a>
+<Layout title={`${entry.nombre} | Desarrollado por ${PERSONA.nombre}`}>
+  <div
+    class="w-full mx-auto lg:max-w-3xl md:max-w-3xl my-4 px-4 md:px-0 mt-0 md:mt-10"
+  >
+    <header>
+      <ButtonSecondary href="/#proyectos" title="← Volver atrás" />
 
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10 mt-10">
-      <header class="bg-custom md:col-span-3 rounded-xl overflow-hidden">
+      <div class="mt-5 md:mt-15 mb-5 md:mb-10">
+        <h1
+          class="dark:text-secondary text-primary text-5xl font-medium mb-3 text-pretty"
+          transition:name={`title-project-${entry.slug}`}
+          transition:animate="fade"
+        >
+          {entry.nombre}
+        </h1>
+        <h2
+          class="text-foreground dark:text-muted-foreground text-lg text-pretty mb-2"
+        >
+          {entry.descripcion}
+        </h2>
+      </div>
+      <div class={`${entry.gradient} md:col-span-3 rounded-xl overflow-hidden`}>
         <Image
           class="w-full aspect-video object-cover"
           src={images[imagePath]()}
           alt={`Proyecto ${entry.descripcion}`}
         />
-      </header>
-      <main class="md:col-span-2">
-        <h1 class="dark:text-secondary text-primary text-5xl font-medium mb-0 font-sans">
-          {entry.nombre}
-        </h1>
-        <h2 class="dark:text-white text-neutral text-lg font-sans text-balance">
-          {entry.descripcion}
-        </h2>
-        <p class="dark:text-white text-neutral text-xl mt-7 text-pretty font-sans">
-          {entry.post}
+      </div>
+    </header>
+
+    <main class="mt-5">
+      <p
+        class="text-foreground dark:text-muted-foreground text-lg mt-7 text-pretty leading-7"
+      >
+        {entry.post}
+      </p>
+
+      <section class="mb-2 mt-15">
+        <p class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5">
+          Creado con
         </p>
-      </main>
-      <article class="p-4 rounded-xl custom-shadow bg-transparent bg-gradient-to-tr from-secondary via-secondary dark:from-primary dark:via-primary dark:to-accent to-accent">
-        <header class="mb-2 flex flex-col gap-3 text-lg font-semibold leading-7">
-          <ButtonPrimary title="Ver proyecto" href={entry.url} />
+
+        <article class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {
-            !entry.isPrivate && (
-              <ButtonSecondary title="Ver el código" href={entry.url_repositorio} />
-            )
+            entry.lenguajes.map((lenguaje) => (
+              <div class="text-center flex flex-col overflow-hidden items-center p-4 rounded-xl dark:text-slate-300 text-slate-600 custom-shadow">
+                <Icons name={lenguaje as IconName} />
+                <small class="text-center">{lenguaje}</small>
+              </div>
+            ))
           }
-        </header>
+        </article>
+      </section>
 
-        <main>
-          <p class="dark:text-white text-neutral-800 font-semibold text-xl mb-2 mt-5" >Creado con</p>
-          <div class="flex flex-wrap gap-x-5 gap-y-2 align-baseline justify-items-start">
-            {
-              entry.lenguajes.map((lenguaje) => (
-                <span class="font-medium flex py-2 text-sm gap-x-2 items-center leading-4 text-neutral-900 dark:text-white no-underline">
-                  <Icons name={lenguaje as IconName} />
-                  {lenguaje}
-                </span>
-              ))
-            }
-          </div>
-        </main>
-      </article>
-    </section>
+      <section class="mb-10 mt-15">
+        <p class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5">
+          Enlace al proyecto
+        </p>
 
-    <section class="mt-20 mb-24">
-      <h2 class="dark:text-white text-neutral-800 text-2xl font-medium mb-0">
-        Otros proyectos creados
-      </h2>
-      <div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 lg:mt-10">
+        <a
+          target="_blank"
+          class="flex w-fit flex-wrap items-center gap-1 text-foreground dark:text-muted-foreground underline underline-offset-4 hover:text-foreground hover:no-underline font-semibold mb-5"
+          href={entry.url}>Ver proyecto →</a
+        >
+
         {
-          project.filter((p) => p.imagen !== "5").map(
-            ({ nombre, imagen, descripcion, slug }) => (
-              <CardProject slug={`${slug}` } nombre={nombre}, imagen={imagen} descripcion={descripcion} />
-            )
+          !entry.isPrivate && (
+            <a
+              target="_blank"
+              class="flex w-fit flex-wrap items-center gap-1 text-foreground dark:text-muted-foreground underline underline-offset-4 hover:text-foreground hover:no-underline font-semibold"
+              href={entry.url_repositorio}
+            >
+              Ver el código →
+            </a>
           )
         }
+      </section>
+    </main>
+
+    <article class="mt-20 mb-24">
+      <h2 class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5">
+        Otros proyectos creados
+      </h2>
+      <div
+        class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-5 lg:mt-10"
+      >
+        {
+          project.map(({ nombre, imagen, descripcion, slug, gradient }) => (
+            <CardProject
+              slug={`${slug}`}
+              nombre={nombre}
+              imagen={imagen.srcPoster}
+              descripcion={descripcion}
+              gradient={gradient}
+            />
+          ))
+        }
       </div>
-    </section>
-
-    <section class="mb-36">
+    </article>
+    <footer>
       <Trabajemos />
-    </section>
-  </main>
+    </footer>
+  </div>
 </Layout>
-
-<style>
-  .bg-custom {
-    display: grid;
-    border-radius: 16px;
-    align-items: center;
-    justify-items: center;
-    place-items: center;
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    background: linear-gradient(
-      rgba(42, 60, 117, 0.2) 0,
-      rgba(6, 8, 34, 0.2) calc(100% + 40%),
-      #3b82f6 calc(100% + 80%),
-      #fff calc(100% + 120%)
-    );
-    transition:
-      box-shadow 0.2s ease,
-      --gradient-offset 1s ease;
-  }
-</style>
