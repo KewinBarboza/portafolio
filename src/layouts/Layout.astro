@@ -14,8 +14,6 @@ export interface Props {
 const { title } = Astro.props as Props
 ---
 
-<Font cssVariable="--font-onest" preload />
-
 <html lang="en" class="scroll-smooth" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
@@ -31,12 +29,7 @@ const { title } = Astro.props as Props
     <script src="/darkMode.js" is:inline async></script>
 
     <ClientRouter />
-
-    <style>
-      body {
-        font-family: var(--font-onest);
-      }
-    </style>
+    <Font cssVariable="--font-onest" preload />
   </head>
 
   <body class="dark:bg-[#020617] bg-secondary overflow-x-hidden relative">
