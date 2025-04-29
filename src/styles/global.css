@@ -3,7 +3,7 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme inline {
-
+  --font-sans: var(--font-onest);
 
   --color-accent: hsla(0, 0%, 100%, .1);
   --color-primary: #171717;
