@@ -2,7 +2,7 @@
 import { Image } from "astro:assets"
 import PERSONA from "@/data/persona.js"
 import ButtonPrimary from "@/components/UI/ButtonPrimary.astro"
-import foto from "../../../public/image/foto-5.png"
+import foto from "../../../public/image/foto2025.png"
 import { BtnDownloadCv } from "@/components/react/btn-download-cv"
 
 const { nombre, profesion, curriculum, proyectos, carrera } = PERSONA
@@ -65,7 +65,7 @@ const { nombre, profesion, curriculum, proyectos, carrera } = PERSONA
       >
         <div class="-mt-16 md:-mt-24 mask-b-from-50% mask-b-to-90%">
           <Image
-            class="rounded-3xl object-cover aspect-[5/8]"
+            class="rounded-3xl object-cover aspect-[4/5]"
             src={foto}
             alt={`${nombre} desarrollador FrontEnd`}
             width={325}
