@@ -4,7 +4,7 @@ export default {
   portafolio: "https://kewinbarboza.com",
   foto: "./image/foto2025.png",
   profesion: "Desarrollador FrontEnd",
-  og_image: "./image/og.webp",
+  og_image: "/image/og.webp",
   sobre_mi:
     "Soy Kewin Barboza, Desarrollador Frontend, Con mas de 6 años de experiencia y mas de 10 proyectos realizados. con conocimientos en HTML, CSS, JavaScript, React, Node.js, Git, Tailwind CSS, entre otras tecnologías.",
   experiencia: "8",
