@@ -2,12 +2,14 @@ export default {
   nombre: "Kewin Barboza",
   correo: "kewinbarboza@gmail.com",
   portafolio: "https://kewinbarboza.com",
-  foto: "./image/foto.jpeg",
+  foto: "./image/foto2025.png",
   profesion: "Desarrollador FrontEnd",
-  sobre_mi: "",
-  experiencia: "6",
+  og_image: "./image/og.webp",
+  sobre_mi:
+    "Soy Kewin Barboza, Desarrollador Frontend, Con mas de 6 años de experiencia y mas de 10 proyectos realizados. con conocimientos en HTML, CSS, JavaScript, React, Node.js, Git, Tailwind CSS, entre otras tecnologías.",
+  experiencia: "8",
   direccion: "Miranda, Venezuela",
-  proyectos: "8",
+  proyectos: "10",
   carrera: "Ing. Informática",
   LinkedIn: "https://linkedin.com/in/kewinbarboza",
   curriculum:
