@@ -3,6 +3,7 @@ import { defineConfig, fontProviders } from "astro/config"
 import tailwindcss from "@tailwindcss/vite"
 import vercel from "@astrojs/vercel"
 import react from "@astrojs/react"
+import sitemap from "@astrojs/sitemap"
 
 export default defineConfig({
   vite: {
@@ -15,7 +16,7 @@ export default defineConfig({
     analytics: true
   }),
 
-  integrations: [react()],
+  integrations: [react(), sitemap()],
 
   experimental: {
     fonts: [

@@ -36,11 +36,15 @@ const { nombre, profesion, curriculum, proyectos, carrera } = PERSONA
             </span>
           </span>
         </div>
-        <h1
+        <h1 class="sr-only">
+          {nombre} - {profesion} Portfolio
+        </h1>
+        <div
+          aria-hidden="true"
           class="flex items-center justify-center md:justify-start font-bold animate-text-gradient mb-2 text-transparent md:text-start text-5xl md:text-5xl lg:text-6xl bg-clip-text bg-gradient-to-br from-primary to-primary/30 dark:from-secondary dark:to-secondary/30"
         >
           {nombre}
-        </h1>
+        </div>
         <p
           class="col-span-3 text-pretty font-normal text-foreground dark:text-muted-foreground leading-7 text-xl md:text-start text-center"
         >

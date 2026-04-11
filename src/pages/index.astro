@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import Section from "@/layouts/Section.astro"
+import PERSONA from "@/data/persona.js"
 
 import Header from "@/components/sections/Header.astro"
 import Experiencia from "@/components/sections/Experiencia.astro"
@@ -9,10 +10,52 @@ import Recomendaciones from "@/components/sections/Recomendaciones.astro"
 import Title from "@/components/UI/Title.astro"
 import Tecnologias from "@/components/sections/Tecnologias.astro"
 import Trabajemos from "@/components/sections/Trabajemos.astro"
+
+const title = `Desarrollador Frontend Senior | ${PERSONA.nombre}`
+const description = `Portafolio de ${PERSONA.nombre}, ${PERSONA.profesion} con +6 años de experiencia creando aplicaciones web de alto rendimiento usando React, Next.js y Astro.`
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: PERSONA.nombre,
+    url: PERSONA.portafolio,
+    image: new URL(PERSONA.og_image, PERSONA.portafolio).toString(),
+    jobTitle: PERSONA.profesion,
+    description: PERSONA.sobre_mi,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: PERSONA.direccion,
+      addressCountry: "VE"
+    },
+    email: PERSONA.correo,
+    sameAs: [PERSONA.LinkedIn],
+    alumniOf: PERSONA.educacion.map(({ universidad, titulo }: any) => ({
+      "@type": "CollegeOrUniversity",
+      name: universidad,
+      department: titulo
+    })),
+    knowsAbout: PERSONA.tecnologias
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: `${PERSONA.nombre} - Portafolio Profesional`,
+    url: PERSONA.portafolio,
+    description,
+    author: {
+      "@type": "Person",
+      name: PERSONA.nombre
+    }
+  }
+]
 ---
 
 <Layout
-  title="Kewin Barboza | Desarrollador y Programador Web con mas de 6 años de experiencia"
+  title={title}
+  description={description}
+  canonical="/"
+  structuredData={structuredData}
 >
   <Header />
 
@@ -27,11 +70,11 @@ import Trabajemos from "@/components/sections/Trabajemos.astro"
       <Proyectos />
     </Section>
 
-    <Section id="">
+    <Section id="contacto">
       <Trabajemos />
     </Section>
 
-    <Section id="">
+    <Section id="tecnologias">
       <Tecnologias />
     </Section>
 

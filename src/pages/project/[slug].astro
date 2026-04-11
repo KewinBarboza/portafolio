@@ -33,9 +33,42 @@ if (!images[imagePath])
 
 const orderRandom = [...PROYECTOS].sort(() => Math.random() - 0.5)
 const project = orderRandom.splice(0, 2)
+
+const title = `${entry.nombre} - Proyecto Frontend | ${PERSONA.nombre}`
+const description = `${entry.descripcion}. Descubre cómo desarrollé este proyecto usando ${entry.lenguajes.slice(0, 3).join(", ")}.`
+const url = new URL(`/project/${entry.slug}`, PERSONA.portafolio).toString()
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: entry.nombre,
+  description: entry.descripcion,
+  applicationCategory: "WebApplication",
+  operatingSystem: "Web",
+  author: {
+    "@type": "Person",
+    name: PERSONA.nombre,
+    url: PERSONA.portafolio
+  },
+  url: entry.url || url,
+  image: new URL(
+    imagePath.replace("/src/assets/", "/"),
+    PERSONA.portafolio
+  ).toString(),
+  offers: {
+    "@type": "Offer",
+    price: "0"
+  },
+  keywords: entry.lenguajes.join(", ")
+}
 ---
 
-<Layout title={`${entry.nombre} | Desarrollado por ${PERSONA.nombre}`}>
+<Layout
+  title={title}
+  description={description}
+  canonical={`/project/${entry.slug}`}
+  structuredData={structuredData}
+>
   <div
     class="w-full mx-auto lg:max-w-3xl md:max-w-3xl my-4 px-4 md:px-0 mt-0 md:mt-10"
   >
@@ -60,7 +93,7 @@ const project = orderRandom.splice(0, 2)
         <Image
           class="w-full aspect-video object-cover"
           src={images[imagePath]()}
-          alt={`Proyecto ${entry.descripcion}`}
+          alt={`Captura de pantalla o vista previa del proyecto ${entry.nombre}: ${entry.descripcion}`}
         />
       </div>
     </header>
@@ -73,48 +106,54 @@ const project = orderRandom.splice(0, 2)
       </p>
 
       <section class="mb-2 mt-15">
-        <p class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5">
-          Creado con
-        </p>
+        <h2
+          class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5"
+        >
+          Tecnologías utilizadas
+        </h2>
 
-        <article class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {
-            entry.lenguajes.map((lenguaje) => (
-              <div class="text-center flex flex-col overflow-hidden items-center p-4 rounded-xl dark:text-slate-300 text-slate-600 custom-shadow">
+            entry.lenguajes.map((lenguaje: any) => (
+              <li class="text-center flex flex-col overflow-hidden items-center p-4 rounded-xl dark:text-slate-300 text-slate-600 custom-shadow">
                 <Icons name={lenguaje as IconName} />
-                <small class="text-center">{lenguaje}</small>
-              </div>
+                <span class="text-center mt-2 text-sm">{lenguaje}</span>
+              </li>
             ))
           }
-        </article>
+        </ul>
       </section>
 
       <section class="mb-10 mt-15">
-        <p class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5">
-          Enlace al proyecto
-        </p>
+        <h2
+          class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5"
+        >
+          Enlaces del proyecto
+        </h2>
 
         <a
           target="_blank"
+          rel="noopener noreferrer"
           class="flex w-fit flex-wrap items-center gap-1 text-foreground dark:text-muted-foreground underline underline-offset-4 hover:text-foreground hover:no-underline font-semibold mb-5"
-          href={entry.url}>Ver proyecto →</a
+          href={entry.url}>Visitar sitio web del proyecto →</a
         >
 
         {
           !entry.isPrivate && (
             <a
               target="_blank"
+              rel="noopener noreferrer"
               class="flex w-fit flex-wrap items-center gap-1 text-foreground dark:text-muted-foreground underline underline-offset-4 hover:text-foreground hover:no-underline font-semibold"
               href={entry.url_repositorio}
             >
-              Ver el código →
+              Ver código fuente en GitHub →
             </a>
           )
         }
       </section>
     </main>
 
-    <article class="mt-20 mb-24">
+    <section class="mt-20 mb-24">
       <h2 class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5">
         Otros proyectos creados
       </h2>
@@ -122,18 +161,20 @@ const project = orderRandom.splice(0, 2)
         class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-5 lg:mt-10"
       >
         {
-          project.map(({ nombre, imagen, descripcion, slug, gradient }) => (
-            <CardProject
-              slug={`${slug}`}
-              nombre={nombre}
-              imagen={imagen.srcPoster}
-              descripcion={descripcion}
-              gradient={gradient}
-            />
-          ))
+          project.map(
+            ({ nombre, imagen, descripcion, slug, gradient }: any) => (
+              <CardProject
+                slug={`${slug}`}
+                nombre={nombre}
+                imagen={imagen.srcPoster}
+                descripcion={descripcion}
+                gradient={gradient}
+              />
+            )
+          )
         }
       </div>
-    </article>
+    </section>
     <footer>
       <Trabajemos />
     </footer>
