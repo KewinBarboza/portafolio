@@ -7,13 +7,17 @@ import BtnThemeToggle from "@/components/UI/BtnThemeToggle.astro"
 ---
 
 <nav
-  class="items-center fixed px-3 top-11/12 md:top-3 bg-transparent mx-auto max-w-max rounded-full custom-shadow z-50"
+  aria-label="Navegación principal"
+  class="items-center sticky top-0 bg-transparent border-x border-b border-neutral-200 dark:border-neutral-800 w-full mx-auto lg:max-w-4xl md:max-w-3xl z-50 transition-colors duration-300"
   id="navbar"
 >
   <div
-    class="mx-auto h-auto flex justify-center md:justify-between items-center py-2"
+    class="mx-auto h-auto flex justify-center md:justify-between items-center"
   >
-    <ul class="flex justify-start items-center">
+    <ul
+      role="list"
+      class="flex items-center divide-x divide-neutral-200 dark:divide-neutral-800"
+    >
       {
         LINKS_HOME.map(({ url, titulo, icon }) => (
           <li>
@@ -22,8 +26,11 @@ import BtnThemeToggle from "@/components/UI/BtnThemeToggle.astro"
         ))
       }
     </ul>
-    <div class="flex md:ms-14 ms-3">
-      <ul class="flex justify-between items-center">
+    <div class="flex md:ms-14 mx-3">
+      <ul
+        role="list"
+        class="flex justify-between divide-x divide-neutral-200 dark:divide-neutral-800 items-center"
+      >
         <RedesSociales />
         <li class="mx-2">
           <BtnThemeToggle />
@@ -33,24 +40,27 @@ import BtnThemeToggle from "@/components/UI/BtnThemeToggle.astro"
   </div>
 </nav>
 
+<style is:global>
+  :root {
+    --nav-bg: rgba(255, 255, 255, 0.85);
+  }
+
+  [data-theme="dark"] {
+    --nav-bg: rgba(23, 23, 23, 0.85);
+  }
+</style>
+
 <style>
   @keyframes add-shadow {
     to {
-      box-shadow:
-        0 5px 50px -5px hsla(0, 0%, 100%, 0.1),
-        0 0 0 1px hsla(0, 0%, 100%, 0.1);
-      background: rgb(43 42 42 / 13%);
+      background: var(--nav-bg);
     }
   }
 
   #navbar {
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     animation: add-shadow linear both;
-    position: sticky;
-    top: 3;
-  }
-
-  #navbar {
     animation-timeline: scroll();
     animation-range: 0 150px;
   }
