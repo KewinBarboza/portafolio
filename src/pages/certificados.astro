@@ -5,8 +5,13 @@ import PERSONA from "@/data/persona.js"
 import Layout from "@/layouts/Layout.astro"
 import Title from "@/components/UI/Title.astro"
 import { Image } from "astro:assets"
+import type { ImageMetadata } from "astro"
 
 type Certificate = (typeof CERTIFICATES)[number]
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/certificates/*.{jpeg,jpg,png,gif,webp,avif}"
+)
 
 const parseDate = (raw: string) => new Date(raw.trim())
 
@@ -177,16 +182,18 @@ const dateFormatter = new Intl.DateTimeFormat("es-ES", {
                       </time>
                     </div>
 
-                    <Image
-                      src={`/src/assets/${cert.imagen}`}
-                      alt={`Certificado de ${cert.nombre} emitido por ${cert.institucion}`}
-                      title={cert.nombre}
-                      loading="lazy"
-                      decoding="async"
-                      class="w-full md:w-56 md:h-40 h-48 object-cover shrink-0 border border-neutral-200 dark:border-neutral-800 grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:shadow-lg transition-all duration-300 rounded-sm"
-                      width={400}
-                      height={300}
-                    />
+                    {images[`/src/assets${cert.imagen}`] && (
+                      <Image
+                        src={images[`/src/assets${cert.imagen}`]()}
+                        alt={`Certificado de ${cert.nombre} emitido por ${cert.institucion}`}
+                        title={cert.nombre}
+                        loading="lazy"
+                        decoding="async"
+                        class="w-full md:w-56 md:h-40 h-48 object-cover shrink-0 border border-neutral-200 dark:border-neutral-800 grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:shadow-lg transition-all duration-300 rounded-sm"
+                        width={400}
+                        height={300}
+                      />
+                    )}
 
                     <div class="flex flex-col gap-1 min-w-0 flex-1">
                       <h2 class="text-base md:text-lg font-semibold text-neutral-800 dark:text-white text-pretty leading-snug">
