@@ -9,7 +9,6 @@ import { IconName } from "@/icons/mapIcons"
 import Icons from "@/components/Icons.astro"
 import CardProject from "@/components/UI/CardProject.astro"
 import Trabajemos from "@/components/sections/Trabajemos.astro"
-import ButtonSecondary from "@/components/UI/ButtonSecondary.astro"
 
 export async function getStaticPaths() {
   return PROYECTOS.map((entry) => ({
@@ -19,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/img-projects/*.{jpeg,jpg,png,gif}"
+  "/src/assets/img-projects/*.{jpeg,jpg,png,gif,avif,webp}"
 )
 
 const { entry } = Astro.props
@@ -28,7 +27,7 @@ const imagePath = `/src/assets/${entry.imagen.srcPoster}`
 
 if (!images[imagePath])
   throw new Error(
-    `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`
+    `"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,avif,webp}"`
   )
 
 const orderRandom = [...PROYECTOS].sort(() => Math.random() - 0.5)
@@ -70,29 +69,36 @@ const structuredData = {
   structuredData={structuredData}
 >
   <div
-    class="w-full mx-auto lg:max-w-3xl md:max-w-3xl my-4 px-4 md:px-0 mt-0 md:mt-10"
+    class="w-full mx-auto md:px-0 border-x border-x-neutral-200 dark:border-x-neutral-800 lg:max-w-4xl md:max-w-3xl"
   >
+    <a
+      href="/#proyectos"
+      class="text-neutral-800 px-3 dark:text-white hover:underline border-b border-neutral-200 dark:border-neutral-800 py-4 block text-start"
+      >← Volver atrás</a
+    >
     <header>
-      <ButtonSecondary href="/#proyectos" title="← Volver atrás" />
-
-      <div class="mt-5 md:mt-15 mb-5 md:mb-10">
+      <div class="my-10 px-6">
         <h1
-          class="dark:text-secondary text-primary text-5xl font-medium mb-3 text-pretty"
+          class="dark:text-secondary text-primary font-medium mb-3 text-pretty text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
           transition:name={`title-project-${entry.slug}`}
           transition:animate="fade"
         >
           {entry.nombre}
         </h1>
         <h2
-          class="text-foreground dark:text-muted-foreground text-lg text-pretty mb-2"
+          class="text-neutral-800 dark:text-neutral-300 leading-7 text-lg text-pretty mb-2"
         >
           {entry.descripcion}
         </h2>
       </div>
-      <div class={`${entry.gradient} md:col-span-3 rounded-xl overflow-hidden`}>
+      <div class="md:col-span-3 overflow-hidden px-6">
         <Image
           class="w-full aspect-video object-cover"
           src={images[imagePath]()}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          format="webp"
           alt={`Captura de pantalla o vista previa del proyecto ${entry.nombre}: ${entry.descripcion}`}
         />
       </div>
@@ -100,83 +106,124 @@ const structuredData = {
 
     <main class="mt-5">
       <p
-        class="text-foreground dark:text-muted-foreground text-lg mt-7 text-pretty leading-7"
+        class="text-neutral-800 dark:text-neutral-300 text-lg mt-7 text-pretty leading-7 px-6 border-b border-neutral-200 dark:border-neutral-800 pb-6"
       >
         {entry.post}
       </p>
-
-      <section class="mb-2 mt-15">
+      <div class="pattern-divider"></div>
+      <section class="border-t border-neutral-200 dark:border-neutral-800">
         <h2
-          class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5"
+          class="dark:text-white text-neutral-800 font-semibold text-2xl my-5 px-6"
         >
           Tecnologías utilizadas
         </h2>
 
-        <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-y border-neutral-200 dark:border-neutral-800"
+        >
           {
-            entry.lenguajes.map((lenguaje: any) => (
-              <li class="text-center flex flex-col overflow-hidden items-center p-4 rounded-xl dark:text-slate-300 text-slate-600 custom-shadow">
-                <Icons name={lenguaje as IconName} />
-                <span class="text-center mt-2 text-sm">{lenguaje}</span>
-              </li>
-            ))
+            (() => {
+              const total = entry.lenguajes.length
+              const lastRowStart1 = total - 1
+              const lastRowStart2 = total - (total % 2 || 2)
+              const lastRowStart3 = total - (total % 3 || 3)
+
+              return entry.lenguajes.map((lenguaje: string, index: number) => (
+                <li
+                  class:list={[
+                    "text-center flex flex-col overflow-hidden items-center p-4 dark:text-white text-neutral-800 border-neutral-200 dark:border-neutral-800",
+                    index % 2 !== 0 ? "sm:border-l" : "",
+                    index % 3 !== 0 ? "lg:border-l" : "lg:border-l-0",
+                    index < lastRowStart1 ? "border-b" : "",
+                    index < lastRowStart2 ? "sm:border-b" : "sm:border-b-0",
+                    index < lastRowStart3 ? "lg:border-b" : "lg:border-b-0"
+                  ]}
+                >
+                  <Icons name={lenguaje as IconName} size={24} />
+                  <span class="text-center mt-2 text-sm">{lenguaje}</span>
+                </li>
+              ))
+            })()
           }
         </ul>
       </section>
 
-      <section class="mb-10 mt-15">
+      <div class="pattern-divider"></div>
+      <section class="border-t border-neutral-200 dark:border-neutral-800">
         <h2
-          class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5"
+          class="dark:text-white text-neutral-800 font-semibold text-2xl my-5 px-6"
         >
           Enlaces del proyecto
         </h2>
 
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex w-fit flex-wrap items-center gap-1 text-foreground dark:text-muted-foreground underline underline-offset-4 hover:text-foreground hover:no-underline font-semibold mb-5"
-          href={entry.url}>Visitar sitio web del proyecto →</a
+        <div
+          class="p-6 border-y border-neutral-200 dark:border-neutral-800 space-y-4"
         >
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex w-fit flex-wrap items-center gap-1 ext-neutral-800 dark:text-neutral-300 leading-7 underline underline-offset-4 hover:text-foreground hover:no-underline font-semibold"
+            href={entry.url}>Visitar sitio web del proyecto →</a
+          >
 
-        {
-          !entry.isPrivate && (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex w-fit flex-wrap items-center gap-1 text-foreground dark:text-muted-foreground underline underline-offset-4 hover:text-foreground hover:no-underline font-semibold"
-              href={entry.url_repositorio}
-            >
-              Ver código fuente en GitHub →
-            </a>
-          )
-        }
+          {
+            !entry.isPrivate && (
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex w-fit flex-wrap items-center gap-1 ext-neutral-800 dark:text-neutral-300 leading-7 underline underline-offset-4 hover:text-foreground hover:no-underline font-semibold"
+                href={entry.url_repositorio}
+              >
+                Ver código fuente en GitHub →
+              </a>
+            )
+          }
+        </div>
       </section>
     </main>
 
-    <section class="mt-20 mb-24">
-      <h2 class="dark:text-white text-neutral-800 font-semibold text-2xl mb-5">
+    <div class="pattern-divider"></div>
+    <section class="border-t border-neutral-200 dark:border-neutral-800">
+      <h2
+        class="dark:text-white text-neutral-800 font-semibold text-2xl my-5 px-6"
+      >
         Otros proyectos creados
       </h2>
       <div
-        class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mt-5 lg:mt-10"
+        class="grid grid-cols-1 md:grid-cols-2 border-y border-neutral-200 dark:border-neutral-800"
       >
         {
           project.map(
-            ({ nombre, imagen, descripcion, slug, gradient }: any) => (
-              <CardProject
-                slug={`${slug}`}
-                nombre={nombre}
-                imagen={imagen.srcPoster}
-                descripcion={descripcion}
-                gradient={gradient}
-              />
+            (
+              { nombre, imagen, descripcion, slug, gradient }: any,
+              index: number
+            ) => (
+              <div
+                class:list={[
+                  "border-neutral-200 dark:border-neutral-800",
+                  index % 1 !== 0 ? "border-l" : "",
+                  index % 2 !== 0 ? "md:border-l" : "md:border-l-0",
+                  index >= 1 ? "border-t" : "",
+                  index >= 2 ? "md:border-t" : "md:border-t-0"
+                ]}
+              >
+                <CardProject
+                  slug={`${slug}`}
+                  nombre={nombre}
+                  imagen={imagen.srcPoster}
+                  descripcion={descripcion}
+                  gradient={gradient}
+                />
+              </div>
             )
           )
         }
       </div>
     </section>
+    <div class="pattern-divider"></div>
     <footer>
       <Trabajemos />
     </footer>
+    <div class="pattern-divider"></div>
   </div>
 </Layout>
