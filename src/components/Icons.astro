@@ -4,14 +4,26 @@ import { mapIcons, IconName } from "@/icons/mapIcons"
 interface Props {
   name: IconName
   dark?: boolean
+  size?: number | string
+  width?: number | string
+  height?: number | string
 }
 
-const { name, dark } = Astro.props
+const { name, dark, size, width, height } = Astro.props
 
-const iconSvg = dark ? mapIcons.DARK[name] : mapIcons[name]
+let iconSvg = dark ? mapIcons.DARK[name] : mapIcons[name]
 
 if (!iconSvg) {
   console.error(`Icon "${name}" not found`)
+}
+
+if (iconSvg && (size || width || height)) {
+  const w = width ?? size
+  const h = height ?? size
+  iconSvg = iconSvg.replace(
+    /<svg/,
+    `<svg${w ? ` width="${w}"` : ""}${h ? ` height="${h}"` : ""}`
+  )
 }
 ---
 
