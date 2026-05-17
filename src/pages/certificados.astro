@@ -1,0 +1,222 @@
+---
+import CERTIFICATES from "@/data/certificates"
+import PERSONA from "@/data/persona.js"
+
+import Layout from "@/layouts/Layout.astro"
+import Title from "@/components/UI/Title.astro"
+import { Image } from "astro:assets"
+
+type Certificate = (typeof CERTIFICATES)[number]
+
+const parseDate = (raw: string) => new Date(raw.trim())
+
+const sortedCertificates = [...CERTIFICATES].sort(
+  (a, b) => parseDate(b.fecha).getTime() - parseDate(a.fecha).getTime()
+)
+
+const totalCertificates = sortedCertificates.length
+const uniqueInstitutions = [
+  ...new Set(sortedCertificates.map((c: Certificate) => c.institucion))
+]
+
+const customTitle = `Certificados y cursos de ${PERSONA.nombre} | ${PERSONA.profesion}`
+const customDescription = `Listado de ${totalCertificates} certificados y cursos completados por ${PERSONA.nombre}, ${PERSONA.profesion}, en plataformas como ${uniqueInstitutions.slice(0, 4).join(", ")}. Formación continua en desarrollo de software y tecnologías web.`
+
+const certificadosUrl = new URL("/certificados", PERSONA.portafolio).toString()
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: customTitle,
+    description: customDescription,
+    url: certificadosUrl,
+    inLanguage: "es",
+    isPartOf: {
+      "@type": "WebSite",
+      name: PERSONA.nombre,
+      url: PERSONA.portafolio
+    },
+    about: {
+      "@type": "Person",
+      name: PERSONA.nombre,
+      jobTitle: PERSONA.profesion,
+      url: PERSONA.portafolio,
+      sameAs: [PERSONA.LinkedIn]
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: totalCertificates,
+      itemListElement: sortedCertificates.map((cert: Certificate, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "EducationalOccupationalCredential",
+          name: cert.nombre,
+          url: cert.url,
+          dateCreated: cert.fecha.trim(),
+          credentialCategory: "Certificate",
+          recognizedBy: {
+            "@type": "Organization",
+            name: cert.institucion
+          }
+        }
+      }))
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: PERSONA.portafolio
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Certificados",
+        item: certificadosUrl
+      }
+    ]
+  }
+]
+
+const groupedByYear = sortedCertificates.reduce<Record<number, Certificate[]>>(
+  (acc, cert) => {
+    const year = parseDate(cert.fecha).getFullYear()
+    if (!acc[year]) acc[year] = []
+    acc[year].push(cert)
+    return acc
+  },
+  {}
+)
+
+const years = Object.keys(groupedByYear)
+  .map(Number)
+  .sort((a, b) => b - a)
+
+const dateFormatter = new Intl.DateTimeFormat("es-ES", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric"
+})
+---
+
+<Layout
+  title={customTitle}
+  description={customDescription}
+  canonical="/certificados"
+  structuredData={structuredData}
+>
+  <div
+    class="w-full mx-auto md:px-0 border-x border-x-neutral-200 dark:border-x-neutral-800 lg:max-w-4xl md:max-w-3xl bg-white dark:bg-black"
+  >
+    <a
+      href="/#proyectos"
+      class="text-neutral-800 px-3 dark:text-white hover:underline py-4 block text-start"
+      >← Volver atrás</a
+    >
+    <header>
+      <Title title="Certificados" as="h1" />
+    </header>
+
+    <p
+      class="px-6 py-6 text-neutral-600 dark:text-neutral-400 text-base border-t border-neutral-200 dark:border-neutral-800 text-pretty"
+    >
+      Una línea de tiempo con los {totalCertificates} cursos y certificaciones que
+      he completado a lo largo de mi carrera como {PERSONA.profesion}, emitidos
+      por plataformas como {uniqueInstitutions.slice(0, 4).join(", ")}.
+    </p>
+
+    <main>
+      {
+        years.map((year) => (
+          <section aria-labelledby={`year-${year}`} class="relative">
+            <div class="sticky top-14 z-20 pattern-divider border-y border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-black/70 backdrop-blur-sm">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-4 md:pl-6">
+                <span
+                  id={`year-${year}`}
+                  class="bg-white dark:bg-black px-4 text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary/40 dark:from-secondary dark:to-secondary/40 tabular-nums leading-none"
+                >
+                  {year}
+                </span>
+              </span>
+            </div>
+
+            <ol class="relative">
+              {groupedByYear[year].map((cert, certIndex) => (
+                <li
+                  class:list={[
+                    "group relative",
+                    certIndex < groupedByYear[year].length - 1
+                      ? "border-b border-neutral-200 dark:border-neutral-800"
+                      : ""
+                  ]}
+                >
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Ver certificado de ${cert.nombre} emitido por ${cert.institucion}`}
+                    title={`Ver certificado de ${cert.nombre} (${cert.institucion})`}
+                    class="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 px-4 md:px-6 py-5 hover:bg-neutral-50 dark:hover:bg-neutral-900/40 transition-colors"
+                  >
+                    <div class="flex items-center gap-4 md:w-44 shrink-0">
+                      <span
+                        class="size-2.5 rounded-full bg-neutral-300 dark:bg-neutral-700 group-hover:bg-neutral-800 dark:group-hover:bg-white transition-colors shrink-0"
+                        aria-hidden="true"
+                      />
+                      <time
+                        datetime={cert.fecha.trim()}
+                        class="text-xs uppercase tracking-wider text-neutral-600 dark:text-neutral-400 tabular-nums"
+                      >
+                        {dateFormatter.format(parseDate(cert.fecha))}
+                      </time>
+                    </div>
+
+                    <Image
+                      src={`/src/assets/${cert.imagen}`}
+                      alt={`Certificado de ${cert.nombre} emitido por ${cert.institucion}`}
+                      title={cert.nombre}
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full md:w-56 md:h-40 h-48 object-cover shrink-0 border border-neutral-200 dark:border-neutral-800 grayscale group-hover:grayscale-0 transition-all duration-300"
+                      width={400}
+                      height={300}
+                    />
+
+                    <div class="flex flex-col gap-1 min-w-0 flex-1">
+                      <h2 class="text-base md:text-lg font-semibold text-neutral-800 dark:text-white text-pretty leading-snug">
+                        {cert.nombre}
+                      </h2>
+                      <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        {cert.institucion}
+                      </p>
+                      <span class="text-sm text-neutral-800 dark:text-white mt-1 inline-flex items-center gap-1 w-fit">
+                        Ver certificado
+                        <span
+                          aria-hidden="true"
+                          class="transition-transform group-hover:translate-x-1"
+                        >
+                          →
+                        </span>
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))
+      }
+
+      <div
+        class="pattern-divider border-t border-neutral-200 dark:border-neutral-800"
+      >
+      </div>
+    </main>
+  </div>
+</Layout>

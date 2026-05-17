@@ -10,6 +10,7 @@ import Recomendaciones from "@/components/sections/Recomendaciones.astro"
 import Title from "@/components/UI/Title.astro"
 import Tecnologias from "@/components/sections/Tecnologias.astro"
 import Trabajemos from "@/components/sections/Trabajemos.astro"
+import Certificados from "@/components/sections/Certificados.astro"
 
 const title = `Desarrollador Frontend Senior | ${PERSONA.nombre}`
 const description = `Portafolio de ${PERSONA.nombre}, ${PERSONA.profesion} con +6 años de experiencia creando aplicaciones web de alto rendimiento usando React, Next.js y Astro.`
@@ -76,6 +77,11 @@ const structuredData = [
 
     <Section id="tecnologias">
       <Tecnologias />
+    </Section>
+
+    <Section id="certificados">
+      <Title title="Certificados" />
+      <Certificados />
     </Section>
 
     <Section id="recomendaciones">
