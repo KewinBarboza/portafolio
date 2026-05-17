@@ -7,16 +7,22 @@ const { tecnologias } = PERSONA
 ---
 
 <h3
-  class="uppercase text-center block mb-5 font-extrabold text-gray-600 dark:text-slate-200"
+  class="uppercase text-center block p-5 font-extrabold text-neutral-800 dark:text-white border-y border-neutral-200 dark:border-neutral-800"
 >
   Stack y herramientas principales
 </h3>
 <ul
-  class="mt-8 mb-8 grid grid-cols-2 auto-rows-fr justify-center items-center content-center text-white gap-6 mx-auto sm:grid-cols-3 md:gap-x-16 lg:flex lg:flex-wrap lg:gap-x-20 xl:gap-x-28"
+  class="grid grid-cols-2 justify-center items-center content-center text-white mx-auto md:grid-cols-4"
 >
   {
-    tecnologias.map((tecnologia) => (
-      <li class="text-center flex flex-col overflow-hidden items-center p-4 rounded-xl dark:text-slate-300 text-slate-600">
+    tecnologias.map((tecnologia, index) => (
+      <li
+        class:list={[
+          "text-center flex flex-col overflow-hidden items-center p-4 dark:text-white text-neutral-600 border-b border-neutral-200 dark:border-neutral-800",
+          "md:border-l md:[&:nth-child(4n+1)]:border-l-0",
+          index >= tecnologias.length - 2 && "md:col-span-2"
+        ]}
+      >
         <Icons name={tecnologia as IconName} dark />
         <span class="text-center text-sm mt-2">{tecnologia}</span>
       </li>

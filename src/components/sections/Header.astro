@@ -2,7 +2,7 @@
 import { Image } from "astro:assets"
 import PERSONA from "@/data/persona.js"
 import ButtonPrimary from "@/components/UI/ButtonPrimary.astro"
-import foto from "../../../public/image/foto2025.png"
+import foto from "../../../public/image/foto2026p.png"
 import { BtnDownloadCv } from "@/components/react/btn-download-cv"
 
 const { nombre, profesion, curriculum, proyectos, carrera } = PERSONA
@@ -10,14 +10,16 @@ const { nombre, profesion, curriculum, proyectos, carrera } = PERSONA
 
 <header
   id="inicio"
-  class="scroll-mt-24 w-full mx-auto lg:max-w-4xl md:max-w-3xl md:px-10 md:my-24 my-16"
+  class="scroll-mt-24 w-full mx-auto lg:max-w-4xl md:max-w-3xl border-b border-x border-neutral-200 dark:border-neutral-800"
 >
   <div class="max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-5 md:gap-15 gap-10 items-center">
-      <div class="text-start col-span-3">
+    <div
+      class="grid md:grid-cols-5 gap-8 md:gap-12 lg:gap-15 items-center pt-12 ps-6"
+    >
+      <div class="text-center md:text-start col-span-3">
         <div class="mb-5 flex gap-2 flex-wrap justify-center md:justify-start">
           <span
-            class="inline-flex items-center justify-center rounded-full custom-shadow px-3 py-1 text-lg font-medium backdrop-blur-3xl"
+            class="inline-flex items-center justify-center rounded-full custom-shadow px-3 py-1 text-base md:text-lg font-medium backdrop-blur-3xl"
           >
             <span
               class="bg-gradient-to-t bg-clip-text text-transparent from-neutral-950 via-gray-600 to-gray-400 dark:from-primary/30 dark:via-white dark:to-white"
@@ -27,7 +29,7 @@ const { nombre, profesion, curriculum, proyectos, carrera } = PERSONA
           </span>
 
           <span
-            class="inline-flex items-center justify-center rounded-full custom-shadow px-3 py-1 text-lg font-medium backdrop-blur-3xl"
+            class="inline-flex items-center justify-center rounded-full custom-shadow px-3 py-1 text-base md:text-lg font-medium backdrop-blur-3xl"
           >
             <span
               class="bg-gradient-to-t bg-clip-text text-transparent from-neutral-950 via-gray-600 to-gray-400 dark:from-primary/30 dark:via-white dark:to-white"
@@ -41,19 +43,19 @@ const { nombre, profesion, curriculum, proyectos, carrera } = PERSONA
         </h1>
         <div
           aria-hidden="true"
-          class="flex items-center justify-center md:justify-start font-bold animate-text-gradient mb-2 text-transparent md:text-start text-5xl md:text-5xl lg:text-6xl bg-clip-text bg-gradient-to-br from-primary to-primary/30 dark:from-secondary dark:to-secondary/30"
+          class="flex items-center justify-center md:justify-start font-bold animate-text-gradient mb-2 text-transparent text-4xl sm:text-5xl md:text-5xl lg:text-6xl bg-clip-text bg-gradient-to-br from-primary to-primary/30 dark:from-secondary dark:to-secondary/30"
         >
           {nombre}
         </div>
         <p
-          class="col-span-3 text-pretty font-normal text-foreground dark:text-muted-foreground leading-7 text-xl md:text-start text-center"
+          class="text-pretty font-normal text-neutral-800 dark:text-white leading-7 text-lg md:text-xl"
         >
           {profesion} con <strong class="font-semibold"
             >+6 años de experiencia</strong
           > trabando para grandes empresas
         </p>
 
-        <div class="mt-10 w-full text-center md:text-start">
+        <div class="mt-8 md:mt-10 w-full text-center md:text-start">
           <BtnDownloadCv client:only="react">
             <ButtonPrimary
               slot="fallback"
@@ -65,17 +67,15 @@ const { nombre, profesion, curriculum, proyectos, carrera } = PERSONA
         </div>
       </div>
       <div
-        class="flex justify-center items-center w-full h-full bg-gradient-to-b from-blue-900/40 via-blue-100/5 to-blue-50/0 backdrop-blur-3xl md:p-2 col-span-3 md:col-span-2 rounded-4xl"
+        class="flex justify-center items-center w-full h-full col-span-3 md:col-span-2 mask-b-from-20% mask-b-to-95%"
       >
-        <div class="-mt-16 md:-mt-24 mask-b-from-50% mask-b-to-90%">
-          <Image
-            class="rounded-3xl object-cover aspect-[4/5]"
-            src={foto}
-            alt={`${nombre} desarrollador FrontEnd`}
-            width={325}
-            height={325}
-          />
-        </div>
+        <Image
+          class="object-cover aspect-[4/5] w-full max-w-[280px] md:max-w-[375px]"
+          src={foto}
+          alt={`${nombre} desarrollador FrontEnd`}
+          width={375}
+          height={375}
+        />
       </div>
     </div>
   </div>

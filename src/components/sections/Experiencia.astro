@@ -1,7 +1,12 @@
 ---
 import { Image } from "astro:assets"
 import EXPERIENCIA from "@/data/experiencia.js"
-import ButtonPrimary from "@/components/UI/ButtonPrimary.astro"
+
+interface Props {
+  showAll?: boolean
+}
+
+const { showAll = false } = Astro.props
 
 import iut from "@/assets/logos-empresas/iut.png"
 import sl from "@/assets/logos-empresas/sl.png"
@@ -32,76 +37,104 @@ const shortExperiencia = [
     stack
   }
 ]
+
+const experienciaData = showAll ? EXPERIENCIA : shortExperiencia
 ---
 
-<article class="mt-10">
-  <main class="mask-b-from-50% mask-b-to-100%">
+<article class="border-t border-neutral-200 dark:border-neutral-800">
+  <main class:list={[{ "mask-b-from-50% mask-b-to-100%": !showAll }]}>
     <ol class="relative">
       {
-        shortExperiencia.map(
-          ({ nombre, icono, proyectos, tiempo, cargo, lugar, stack }) => (
-            <li class="mb-20">
-              <header class="md:flex gap-4 w-full">
-                <div class="p-1 size-16 flex justify-items-center items-center rounded-xl overflow-hidden custom-shadow bg-accent/90 backdrop-blur-[2px] aspect-[5/4]">
-                  <Image
-                    src={logos[icono]}
-                    alt={`${nombre} logo`}
-                    class="w-full h-full object-contain"
-                  />
-                </div>
-                <div class="md:flex justify-between items-center w-full mt-3 md:mt-0">
-                  <div>
-                    <div class="flex items-end mb-1 gap-x-2">
-                      <h3 class="text-lg md:text-xl font-semibold dark:text-white text-neutral-600">
-                        {cargo}
-                      </h3>
-                      <span class="text-base text-foreground dark:text-muted-foreground">
-                        -
-                      </span>
-                      <p class="text-base text-foreground dark:text-muted-foreground">
-                        {nombre}
+        experienciaData.map(
+          (
+            { nombre, icono, proyectos, tiempo, cargo, lugar, stack },
+            index
+          ) => (
+            <>
+              <li>
+                <header class="flex flex-col md:flex-row w-full border-b border-neutral-200 dark:border-neutral-800">
+                  <div class="w-full md:w-16 shrink-0 self-stretch flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r border-neutral-200 dark:border-neutral-800 py-4 md:py-0">
+                    <Image
+                      src={logos[icono]}
+                      alt={`${nombre} logo`}
+                      class="size-12 object-contain"
+                    />
+                  </div>
+                  <div class="flex flex-col md:flex-row justify-between items-stretch w-full">
+                    <div class="md:border-r border-neutral-200 dark:border-neutral-800 flex flex-col justify-center flex-1 min-w-0">
+                      <div class="flex flex-wrap items-end mb-1 p-4 md:p-5 gap-x-2">
+                        <h3 class="text-lg md:text-xl font-semibold dark:text-white text-neutral-600">
+                          {cargo}
+                        </h3>
+                        <span class="text-base text-foreground dark:text-neutral-400">
+                          -
+                        </span>
+                        <p class="text-base text-neutral-600 dark:text-neutral-400">
+                          {nombre}
+                        </p>
+                      </div>
+
+                      <div class="flex flex-wrap items-center gap-x-1 border-t border-neutral-200 dark:border-neutral-800">
+                        {stack.map((item) => (
+                          <span class="inline-flex items-center p-2 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-nowrap text-neutral-800 dark:text-neutral-300 align-middle text-xs">
+                            • {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center text-center px-6 py-3 md:py-0 border-t md:border-t-0 border-neutral-200 dark:border-neutral-800 shrink-0">
+                      <p class="italic text-xs text-neutral-800 dark:text-gray-300">
+                        {lugar}
+                      </p>
+                      <time class="block mt-1 text-sm font-normal leading-none text-neutral-800 dark:text-neutral-200">
+                        {tiempo}
+                      </time>
+                    </div>
+                  </div>
+                </header>
+                <main>
+                  {proyectos.map(({ titulo, año, className }) => (
+                    <div
+                      class:list={[
+                        "flex flex-col md:grid grid-cols-4 border-b border-neutral-200 dark:border-neutral-800 px-4 md:px-6 py-4 md:py-0 gap-1 md:gap-0",
+                        className
+                      ]}
+                    >
+                      <div class="dark:text-white text-neutral-600 text-base font-medium items-center flex">
+                        {año}
+                      </div>
+                      <p class="md:col-span-3 text-pretty text-neutral-800 dark:text-neutral-300 leading-7 *:font-medium *:text-neutral-800 dark:*:text-white text-base md:p-6">
+                        <Fragment set:html={titulo} />
                       </p>
                     </div>
-
-                    <div class="flex items gap-x-1">
-                      {stack.map((item) => (
-                        <span class="inline-flex items-center rounded-md border px-1 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-nowrap border-transparent bg-muted-foreground/10 text-secondary-foreground align-middle text-xs dark:text-muted-foreground">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div class="mt-4 md:mt-0">
-                    <p class="flex items-center italic text-xs text-neutral-800 dark:text-gray-300">
-                      {lugar}
-                    </p>
-                    <time class="block mt-1 md:mt-0 mb-2 text-sm font-normal leading-none text-neutral-800 dark:text-white">
-                      {tiempo}
-                    </time>
-                  </div>
-                </div>
-              </header>
-              <main class="mb-5">
-                {proyectos.map(({ titulo, año, className }) => (
-                  <div
-                    class:list={["py-2 md:py-5 md:grid grid-cols-4", className]}
-                  >
-                    <div class=" dark:text-white text-neutral-600 text-base font-medium">
-                      {año}
-                    </div>
-                    <p class="md:col-span-3 text-pretty text-foreground dark:text-muted-foreground leading-7 *:font-medium *:text-foreground  dark:*:text-muted-foreground text-base">
-                      <Fragment set:html={titulo} />
-                    </p>
-                  </div>
-                ))}
-              </main>
-            </li>
+                  ))}
+                </main>
+              </li>
+              {showAll && (
+                <div
+                  class:list={[
+                    "pattern-divider",
+                    index < experienciaData.length - 1
+                      ? "border-b border-neutral-200 dark:border-neutral-800"
+                      : ""
+                  ]}
+                />
+              )}
+            </>
           )
         )
       }
     </ol>
   </main>
-  <footer class="flex justify-center">
-    <ButtonPrimary title="Ver mas " href="/experiencia" />
-  </footer>
+
+  {
+    !showAll && (
+      <a
+        href="/experiencia"
+        class="text-neutral-800 dark:text-white hover:underline border-y border-neutral-200 dark:border-neutral-800 py-4 block text-center"
+      >
+        Ver más
+      </a>
+    )
+  }
 </article>

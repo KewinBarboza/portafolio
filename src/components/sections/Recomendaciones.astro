@@ -5,30 +5,34 @@ import RECOMENDACIONES from "@/data/recomendaciones.js"
 import alexander from "@/assets/image/alexander.webp"
 import romulo from "@/assets/image/romulo.webp"
 import camilo from "@/assets/image/camilo.webp"
+import carlos from "@/assets/image/carlos.webp"
 
 const foto = {
   alexander,
   romulo,
-  camilo
+  camilo,
+  carlos
 }
 ---
 
-<article class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+<article
+  class="grid grid-cols-1 md:grid-cols-2 border-t border-neutral-200 dark:border-neutral-800"
+>
   {
     RECOMENDACIONES.map(({ nombre, empresa, descripcion, cargo, image }) => (
-      <article class="rounded-xl flex flex-col justify-between custom-shadow p-7 backdrop-blur-[2px]">
+      <article class="flex flex-col justify-between p-7 border-b border-neutral-200 dark:border-neutral-800 md:[&:nth-child(even)]:border-l">
         <main class="flex-auto mb-3">
-          <p class="font-base text-lg text-pretty text-foreground dark:text-muted-foreground mb-0">
+          <p class="font-base text-base text-pretty text-neutral-800 dark:text-white mb-0">
             {descripcion}
           </p>
         </main>
         <footer class="flex items-start mt-2 gap-x-4">
           {image === "" ? (
-            <div class="aspect-[5/4] object-cover w-14 h-14 bg-foreground rounded-full" />
+            <div class="aspect-[5/4] object-cover size-10 bg-neutral-200 dark:bg-neutral-800 rounded-full" />
           ) : (
             <Image
               src={foto[image]}
-              class="aspect-[5/4] object-cover w-14 h-14 rounded-full"
+              class="aspect-[5/4] object-cover size-10 rounded-full"
               loading="lazy"
               decoding="async"
               height="36"
@@ -38,13 +42,13 @@ const foto = {
           )}
 
           <div class="w-full flex flex-col items-start">
-            <p class="font-semibold text-primary dark:text-secondary text-xl">
+            <p class="font-semibold text-neutral-800 dark:text-neutral-200 text-sm">
               {nombre}
             </p>
-            <p class="mb-4 font-normal text-primary dark:text-gray-400 text-sm ">
+            <p class="mb-4 font-normal text-neutral-800 dark:text-neutral-400 text-sm ">
               {cargo}
             </p>
-            <p class="dark:text-neutral-200 text-neutral-600 text-sm block">
+            <p class="dark:text-neutral-600 text-neutral-600 text-sm block">
               {empresa}
             </p>
           </div>

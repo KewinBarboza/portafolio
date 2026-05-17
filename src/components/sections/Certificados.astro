@@ -1,0 +1,54 @@
+---
+import CERTIFICATES from "@/data/certificates.js"
+import { Image } from "astro:assets"
+
+const sortedCertificates = [...CERTIFICATES]
+  .sort(
+    (a, b) =>
+      new Date(b.fecha.trim()).getTime() - new Date(a.fecha.trim()).getTime()
+  )
+  .slice(0, 5)
+---
+
+<div
+  class="grid grid-cols-1 md:grid-cols-4 border-t border-neutral-200 dark:border-neutral-800"
+>
+  {
+    sortedCertificates.map((certificate, index) => (
+      <a
+        href={certificate.url}
+        class:list={[
+          "group border-b border-neutral-200 dark:border-neutral-800 p-4 grayscale hover:grayscale-0 transition-all duration-300 ease-in-out cursor-pointer flex flex-col",
+          {
+            "md:col-span-2 md:row-span-2 md:border-r": index === 0,
+            "md:col-span-1 md:border-r": index === 1 || index === 3,
+            "md:col-span-1": index === 2 || index === 4
+          }
+        ]}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <div
+          class:list={[
+            "overflow-hidden w-full rounded-lg flex-1",
+            index === 0 ? "h-64 md:h-full min-h-[300px]" : "h-64 md:h-48"
+          ]}
+        >
+          <Image
+            src={`/src/assets/${certificate.imagen}`}
+            alt={certificate.nombre}
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            width={index === 0 ? 600 : 300}
+            height={index === 0 ? 600 : 300}
+          />
+        </div>
+      </a>
+    ))
+  }
+</div>
+<a
+  href="/certificados"
+  class="text-neutral-800 dark:text-white hover:underline border-b border-neutral-200 dark:border-neutral-800 py-4 block text-center"
+>
+  Ver más <span aria-hidden="true">→</span>
+</a>

@@ -1,47 +1,75 @@
 ---
 import { Image } from "astro:assets"
+import type { ImageMetadata } from "astro"
 import PROYECTOS from "@/data/proyectos.js"
+import { IconName } from "@/icons/mapIcons"
+import Icons from "@/components/Icons.astro"
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/project-screenshots/*.webp"
+)
 ---
 
-<ul class="columns-1 md:columns-2 gap-4">
+<ul class="columns-1 gap-4 border-y border-neutral-200 dark:border-neutral-800">
   {
-    PROYECTOS.map((project) => (
-      <li>
-        <a
-          href={`/project/${project.slug}`}
-          class={`group rounded-xl overflow-hidden transition-shadow h-fit mb-4 p-0.5 block ${project.class}`}
-        >
-          <span class="sr-only">
-            Ver detalles del proyecto {project.nombre}
-          </span>
-          <article
-            class={` z-0 overflow-hidden relative rounded-xl before:absolute before:w-full before:aspect-square before:left-0 before:top-0 before:rounded-full before:blur-3xl before:opacity-80 before:-z-10 before:transition ${project.gradient}`}
-          >
-            <header class="flex items-center gap-3 p-6">
-              <h3
-                class="text-2xl font-bold text-neutral-800 dark:text-white"
-                transition:name={`title-project-${project.slug}`}
-                transition:animate="fade"
-              >
-                {project.nombre}
-              </h3>
-            </header>
-            <p class="text-pretty text-foreground dark:text-muted-foreground leading-7 text-lg font-semibold px-6">
-              {project.descripcion}
-            </p>
-            <div class="w-full h-[1px] dark:bg-white/5 bg-black/5 m-4" />
-            <Image
-              class="w-[calc(100%_-_24px)] max-w-96 group-hover:translate-y-3 group-hover:-translate-x-1 transition group-hover:scale-[101%] translate-y-4 h-auto ml-auto rounded-tl-xl"
-              src={`/image/${project.imagen.src}`}
-              transition:name={`cover-project-${project.slug}`}
-              alt={`Vista previa del proyecto ${project.nombre}`}
-              width={project.imagen.width}
-              height={project.imagen.height}
-              inferSize={true}
+    PROYECTOS.map((project, index) => {
+      const imagePath = `/src/assets/${project.imagen.src}`
+      return (
+        <>
+          <li>
+            <a
+              href={`/project/${project.slug}`}
+              class={`group overflow-hidden transition-shadow h-fit block `}
+            >
+              <span class="sr-only">
+                Ver detalles del proyecto {project.nombre}
+              </span>
+              <article class="flex flex-col sm:flex-row justify-between relative overflow-hidden">
+                <main class="p-4 sm:p-6">
+                  <header class="flex items-center gap-3">
+                    <h3
+                      class="text-xl sm:text-2xl font-bold text-neutral-800 dark:text-white"
+                      transition:name={`title-project-${project.slug}`}
+                      transition:animate="fade"
+                    >
+                      {project.nombre}
+                    </h3>
+                  </header>
+                  <p class="text-pretty text-neutral-600 dark:text-neutral-400 leading-7 text-base sm:text-lg font-normal">
+                    {project.descripcion}
+                  </p>
+
+                  <ul class="flex flex-wrap gap-2 mt-4">
+                    {project.lenguajes.map((lenguaje: any) => (
+                      <li class="text-center flex items-center gap-2 grayscale group-hover:grayscale-0 duration-300 ease-in-out transition-colors overflow-hidden p-2 dark:text-white text-slate-600">
+                        <Icons name={lenguaje as IconName} size={16} />
+                        <span class="text-center text-xs">{lenguaje}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </main>
+
+                <div class="rounded-lg shrink-0 w-full sm:w-[280px] h-[160px] sm:h-[160px] self-end sm:translate-y-10 translate-y-0 mt-4 sm:mt-0">
+                  {images[imagePath] && (
+                    <Image
+                      class="object-cover w-full h-full rotate-3 group-hover:rotate-0 transition-all duration-500 ease-out"
+                      src={images[imagePath]()}
+                      transition:name={`cover-project-${project.slug}`}
+                      alt={`Vista previa del proyecto ${project.nombre}`}
+                    />
+                  )}
+                </div>
+              </article>
+            </a>
+          </li>
+          {index < PROYECTOS.length - 1 && (
+            <li
+              class="pattern-divider border-y border-y-neutral-200 dark:border-y-neutral-800"
+              aria-hidden="true"
             />
-          </article>
-        </a>
-      </li>
-    ))
+          )}
+        </>
+      )
+    })
   }
 </ul>
