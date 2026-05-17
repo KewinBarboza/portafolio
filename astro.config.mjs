@@ -20,10 +20,9 @@ export default defineConfig({
 
   fonts: [
     {
-      provider: fontProviders.fontsource(),
+      provider: fontProviders.google(),
       name: "Geist",
-      cssVariable: "--font-geist",
-      package: "@fontsource/geist"
+      cssVariable: "--font-geist"
     }
   ]
 })
