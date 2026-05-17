@@ -18,13 +18,11 @@ export default defineConfig({
 
   integrations: [react(), sitemap()],
 
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Onest",
-        cssVariable: "--font-onest"
-      }
-    ]
-  }
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Geist",
+      cssVariable: "--font-geist"
+    }
+  ]
 })
