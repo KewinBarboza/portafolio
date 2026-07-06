@@ -95,10 +95,11 @@ const structuredData = {
         <Image
           class="w-full aspect-video object-cover"
           src={images[imagePath]()}
+          width={1200}
           loading="eager"
           fetchpriority="high"
           decoding="async"
-          format="webp"
+          format="avif"
           alt={`Captura de pantalla o vista previa del proyecto ${entry.nombre}: ${entry.descripcion}`}
         />
       </div>
