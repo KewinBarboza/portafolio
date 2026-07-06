@@ -8,11 +8,11 @@ interface Props {
 
 const { showAll = false } = Astro.props
 
-import iut from "@/assets/logos-empresas/iut.png"
-import sl from "@/assets/logos-empresas/sl.png"
-import lockey from "@/assets/logos-empresas/lockey.png"
-import bodyfitness from "@/assets/logos-empresas/bodyfitness.jpg"
-import careandsafety from "@/assets/logos-empresas/careandsafety.png"
+import iut from "@/assets/logos-empresas/iut.avif"
+import sl from "@/assets/logos-empresas/sl.avif"
+import lockey from "@/assets/logos-empresas/lockey.avif"
+import bodyfitness from "@/assets/logos-empresas/bodyfitness.avif"
+import careandsafety from "@/assets/logos-empresas/careandsafety.avif"
 
 const logos = {
   iut,
@@ -57,7 +57,10 @@ const experienciaData = showAll ? EXPERIENCIA : shortExperiencia
                     <Image
                       src={logos[icono]}
                       alt={`${nombre} logo`}
+                      width={96}
                       class="size-12 object-contain"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div class="flex flex-col md:flex-row justify-between items-stretch w-full">
