@@ -10,65 +10,64 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 )
 ---
 
-<ul class="columns-1 gap-4 border-y border-neutral-200 dark:border-neutral-800">
+<ul
+  class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200 dark:divide-neutral-800 border-y border-neutral-200 dark:border-neutral-800"
+>
   {
-    PROYECTOS.map((project, index) => {
+    PROYECTOS.map((project) => {
       const imagePath = `/src/assets/${project.imagen.src}`
       return (
-        <>
-          <li>
-            <a
-              href={`/project/${project.slug}`}
-              class={`group overflow-hidden transition-shadow h-fit block `}
-            >
-              <span class="sr-only">
-                Ver detalles del proyecto {project.nombre}
-              </span>
-              <article class="flex flex-col sm:flex-row justify-between relative overflow-hidden">
-                <main class="p-4 sm:p-6">
-                  <header class="flex items-center gap-3">
-                    <h3
-                      class="text-xl sm:text-2xl font-bold text-neutral-800 dark:text-white"
-                      transition:name={`title-project-${project.slug}`}
-                      transition:animate="fade"
+        <li class="flex">
+          <a
+            href={`/project/${project.slug}`}
+            class="group overflow-hidden transition-shadow flex flex-col w-full"
+          >
+            <span class="sr-only">
+              Ver detalles del proyecto {project.nombre}
+            </span>
+            <article class="flex flex-col h-full">
+              <main class="p-4 sm:p-6 flex-1">
+                <h3
+                  class="text-lg sm:text-xl font-bold text-neutral-800 dark:text-white"
+                  transition:name={`title-project-${project.slug}`}
+                  transition:animate="fade"
+                >
+                  {project.nombre}
+                </h3>
+                <p class="mt-1 text-pretty text-neutral-600 dark:text-neutral-400 leading-6 text-sm sm:text-base font-normal">
+                  {project.descripcion}
+                </p>
+
+                <ul class="flex flex-wrap gap-2 mt-4">
+                  {project.lenguajes.map((lenguaje: any) => (
+                    <li
+                      class="flex items-center justify-center w-8 h-8 rounded-full border border-neutral-300 dark:border-neutral-700 grayscale group-hover:grayscale-0 duration-300 ease-in-out transition-all dark:text-white text-slate-600"
+                      title={lenguaje}
                     >
-                      {project.nombre}
-                    </h3>
-                  </header>
-                  <p class="text-pretty text-neutral-600 dark:text-neutral-400 leading-7 text-base sm:text-lg font-normal">
-                    {project.descripcion}
-                  </p>
+                      <Icons name={lenguaje as IconName} size={16} />
+                    </li>
+                  ))}
+                </ul>
+              </main>
 
-                  <ul class="flex flex-wrap gap-2 mt-4">
-                    {project.lenguajes.map((lenguaje: any) => (
-                      <li class="text-center flex items-center gap-2 grayscale group-hover:grayscale-0 duration-300 ease-in-out transition-colors overflow-hidden p-2 dark:text-white text-slate-600">
-                        <Icons name={lenguaje as IconName} size={16} />
-                        <span class="text-center text-xs">{lenguaje}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </main>
-
-                <div class="rounded-lg shrink-0 w-full sm:w-[280px] h-[160px] sm:h-[160px] self-end sm:translate-y-10 translate-y-0 mt-4 sm:mt-0">
-                  {images[imagePath] && (
-                    <Image
-                      class="object-cover w-full h-full rotate-3 group-hover:rotate-0 transition-all duration-500 ease-out"
-                      src={images[imagePath]()}
-                      transition:name={`cover-project-${project.slug}`}
-                      alt={`Vista previa del proyecto ${project.nombre}`}
-                    />
-                  )}
+              <div class="mt-auto">
+                <div class="px-4 sm:px-6">
+                  <div class="rounded-lg overflow-hidden w-full h-[160px]">
+                    {images[imagePath] && (
+                      <Image
+                        class="object-cover w-full h-full transition-all duration-500 ease-out group-hover:scale-105 [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)] [mask-repeat:no-repeat] [mask-size:100%_100%]"
+                        src={images[imagePath]()}
+                        transition:name={`cover-project-${project.slug}`}
+                        alt={`Vista previa del proyecto ${project.nombre}`}
+                      />
+                    )}
+                  </div>
                 </div>
-              </article>
-            </a>
-          </li>
-          {index < PROYECTOS.length - 1 && (
-            <li
-              class="pattern-divider border-y border-y-neutral-200 dark:border-y-neutral-800"
-              aria-hidden="true"
-            />
-          )}
-        </>
+                <div class="border-b border-neutral-200 dark:border-neutral-800 mt-4 sm:mt-6" />
+              </div>
+            </article>
+          </a>
+        </li>
       )
     })
   }
