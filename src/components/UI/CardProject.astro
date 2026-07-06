@@ -32,8 +32,10 @@ const imagePath = `/src/assets/${imagen}`
     <Image
       transition:name={`cover-project-${slug}`}
       src={images[imagePath]()}
+      width={600}
       class="object-cover transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-100"
       decoding="async"
+      loading="lazy"
       alt={`Vista previa del proyecto ${nombre}`}
     />
   </header>
