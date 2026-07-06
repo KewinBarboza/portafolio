@@ -12,7 +12,7 @@ import BtnThemeToggle from "@/components/UI/BtnThemeToggle.astro"
   id="navbar"
 >
   <div
-    class="mx-auto h-auto flex justify-center md:justify-between items-center"
+    class="mx-auto h-auto flex justify-between md:justify-between items-center px-2 md:px-0"
   >
     <ul
       role="list"
@@ -26,16 +26,16 @@ import BtnThemeToggle from "@/components/UI/BtnThemeToggle.astro"
         ))
       }
     </ul>
-    <div class="flex md:ms-14 mx-3">
+    <div class="flex items-center md:ms-14">
       <ul
         role="list"
-        class="flex justify-between divide-x divide-neutral-200 dark:divide-neutral-800 items-center"
+        class="hidden md:flex justify-between divide-x divide-neutral-200 dark:divide-neutral-800 items-center"
       >
         <RedesSociales />
-        <li class="mx-2">
-          <BtnThemeToggle />
-        </li>
       </ul>
+      <div class="mx-2">
+        <BtnThemeToggle />
+      </div>
     </div>
   </div>
 </nav>
